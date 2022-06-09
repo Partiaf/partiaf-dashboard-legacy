@@ -863,12 +863,6 @@ select {
 }
 
 .loading__circle {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  height: 80px;
-  width: 80px;
-  border-radius: 5rem;
-  border-left: 1px solid transparent;
-  margin-bottom: 1rem;
   transition: 1s;
   animation: animateLoading 0.5s linear infinite;
 }

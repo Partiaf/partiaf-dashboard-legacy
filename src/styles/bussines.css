@@ -36,6 +36,7 @@
   width: 10rem;
   height: 10rem;
   margin-bottom: 1.6rem;
+  object-fit: cover;
 }
 
 .info-welcome p {
@@ -86,7 +87,6 @@
 
 .stores-list{
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 18rem;
   overflow: scroll;
