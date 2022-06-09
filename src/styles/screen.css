@@ -1,7 +1,7 @@
 .screen {
   position: relative;
-  width: calc(100% - 10rem);
-  left: 10rem;
+  width: calc(100% - 18rem);
+  left: 20rem;
   top: 0;
   overflow: hidden;
   height: 94vh;

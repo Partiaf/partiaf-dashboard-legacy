@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/header.css";
+import "../styles/components/header.css";
 import { Link } from "react-router-dom";
 import { signout, signoutBussiness } from "../actions/adminActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,9 +22,7 @@ export default function Header() {
   return (
     <header>
       <nav>
-        <div className="partiaf-icon" onClick={() => setDrop(!drop)}>
-          <img src="./img/resources/partiaf-icon.svg" alt="logo-partiaf" />
-        </div>
+       
         <div className={drop ? "dropdown active" : "dropdown"}>
           <img className="user-image" src={adminInfo.image} alt="" />
 
