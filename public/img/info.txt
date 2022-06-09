@@ -1,0 +1,3 @@
+Color 1: #FDBD00 "amarillo"
+Color 2: #333333 "gris oscuro"
+color 3: #FFFFFF "blanco"

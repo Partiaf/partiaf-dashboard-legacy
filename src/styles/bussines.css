@@ -1,0 +1,81 @@
+.container-welcome {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-card {
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
+  width: 631px;
+  height: 670px;
+  padding: 3rem;
+  margin: 0 auto;
+  border-radius: 0.3rem;
+}
+
+.container-logo {
+  display: flex;
+  margin-bottom: 6rem;
+  height: 38px;
+}
+
+.info-welcome {
+  text-align: center;
+}
+
+.info-welcome h1 {
+  font-size: 4.1rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+
+.info-welcome img {
+  border-radius: 10rem;
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 1.6rem;
+}
+
+.info-welcome p {
+  margin-bottom: 2rem;
+}
+
+.info-welcome span {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+.container-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.container-btn button {
+  width: 40rem;
+  height: 4rem;
+  border-radius: 0.3rem;
+  border: none;
+}
+
+.black-btn {
+  background-color: var(--black);
+  color: var(--white-color);
+  width: 40rem;
+  height: 4rem;
+  border-radius: .3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.gray-btn {
+  background-color: var(--gray);
+  color: var(--black);
+}

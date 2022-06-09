@@ -1,0 +1,31 @@
+header {
+  position: relative;
+  left: 10rem;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  width: calc(100% - 10rem);
+  color: #f2f6fa;
+  /* height: 8vh; */
+  padding: 1rem 2rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo {
+  font-size: 2rem;
+}
+
+.partiaf-icon {
+  width: 180px;
+  margin-top: 0.5rem;
+  /*margin-left: 3rem;*/
+}
+
+.user-image {
+  border-radius: 5rem;
+  border: 2px solid #fdbd00;
+}

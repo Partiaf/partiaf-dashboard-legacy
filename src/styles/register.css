@@ -1,0 +1,142 @@
+.container-register {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  color: var(--black);
+}
+
+.register-card {
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
+  width: 631px;
+  height: 670px;
+  padding: 3rem;
+  margin: 0 auto;
+  border-radius: 0.3rem;
+}
+
+.logo-partiaf {
+  height: 38px;
+  margin-bottom: 2rem;
+}
+
+.logo-partiaf img {
+  height: 100%;
+}
+
+.register-date {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.info-register {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.photo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.container-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contenedor-btn-file input[type="file"] {
+  appearance: none;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+}
+.contenedor-btn-file {
+  height: 100px;
+  width: 100px;
+  background-color: var(--gray);
+  border-radius: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.contenedor-btn-file label {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.select-type-doc{
+    width: 27rem;
+    height: 4rem;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    margin-left: -.1rem;
+}
+
+.container-register input {
+  width: 27rem;
+  height: 4rem;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.personal-data {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.container-btn-register {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+  width: 98%;
+}
+
+.container-btn-register button {
+  width: 11rem;
+  height: 4rem;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+}
+
+.black-button {
+  background-color: var(--black);
+  color: var(--gray);
+}
+
+.gray-button {
+  width: 12rem;
+  background-color: var(--gray);
+  color: var(--black);
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: .3rem;
+ 
+}
+
+.container-register span {
+  font-size: 1.2rem;
+  color: var(--gray);
+}

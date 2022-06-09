@@ -1,0 +1,25 @@
+.card {
+  position: absolute;
+  top: 20px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card i {
+  font-size: 3rem;
+}
+
+.card div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.card div p {
+  width: 100%;
+  font-size: 1.4rem;
+  margin: 0;
+}
