@@ -123,7 +123,7 @@ export default function RegisterScreen(props) {
                 <h5>Foto de perfil</h5>
                 <div className="container-photo">
                   <div className="contenedor-btn-file">
-                    <img src="./assets/add-photo.svg" alt="profile-picture" />
+                    <img src={image? image : "./assets/add-photo.svg" } alt="profile-picture" />
                     <input
                       type="file"
                       name="file"
@@ -196,7 +196,7 @@ export default function RegisterScreen(props) {
               />
             </div>
             <div className="container-btn-register">
-              <Link to="/login" className="gray-button">
+              <Link to="/" className="gray-button">
                 Ir a iniciar sesion
               </Link>
 
