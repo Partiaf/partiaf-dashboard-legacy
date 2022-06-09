@@ -60,8 +60,7 @@ function App() {
           </LayoutHome>
         ) : (
           <>
-            <Route path="/" component={HomeScreen} exact></Route>
-            <Route path="/login" component={LoginScreen} exact></Route>
+            <Route path="/" component={LoginScreen} exact></Route>
             <Route path="/register" component={RegisterScreen} exact></Route>
             <Route path="/settings" component={SettingsScreen} exact></Route>
           </>

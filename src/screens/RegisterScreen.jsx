@@ -122,7 +122,7 @@ export default function RegisterScreen(props) {
               <div className="photo">
                 <h5>Foto de perfil</h5>
                 <div className="container-photo">
-                  <button className="contenedor-btn-file">
+                  <div className="contenedor-btn-file">
                     <img src="./assets/add-photo.svg" alt="profile-picture" />
                     <input
                       type="file"
@@ -130,7 +130,7 @@ export default function RegisterScreen(props) {
                       id="btn-file"
                       onChange={(e) => uploadHandler(e, "featuredImage")}
                     />
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>
