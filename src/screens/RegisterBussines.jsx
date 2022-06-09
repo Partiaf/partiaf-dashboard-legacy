@@ -5,8 +5,9 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { createStore } from "../actions/adminActions";
 import CardLocation from "../components/CardLocation";
+import "../styles/RegisterBussines.css";
 
-export default function StoreScreen(props) {
+export default function RegisterBussines(props) {
   const adminSignin = useSelector((state) => state.adminSignin);
   const { adminInfo } = adminSignin;
 
@@ -58,7 +59,7 @@ export default function StoreScreen(props) {
   };
 
   const submitHandler = (e) => {
-    e.preventDefault();
+   
     dispatch(
       createStore({
         name,
@@ -87,139 +88,125 @@ export default function StoreScreen(props) {
   console.log(images);
 
   return (
-    <div className="register center">
-      <h2 className="register-title new-title">Bienvenido!</h2>
-      <form onSubmit={submitHandler}>
-        <p>Datos del establecimeinto</p>
-
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Nombre"
-          required
-        />
-        {/* <label htmlFor="" className='form-label'>Tipo de Establecimeinto</label> */}
-        <select
-          name=""
-          id=""
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-          required
-        >
-          <option value="">Tipo de Establecimiento</option>
-          <option value="Discoteca">Discoteca</option>
-          <option value="Bar">Bar</option>
-          <option value="Gastrobar">Gastrobar</option>
-        </select>
-        <span className="btn-success" onClick={() => setNoNit(!noNit)}>
-          {noNit ? "No tengo nit" : "Tengo nit"}{" "}
-        </span>
-        {noNit && (
-          <input
-            type="number"
-            value={nit}
-            onChange={(e) => setNit(e.target.value)}
-            name=""
-            id=""
-            placeholder="NIT"
-          />
-        )}
-        <input
-          type="text"
-          value={totalLimit}
-          onChange={(e) => setTotalLimit(e.target.value)}
-          name=""
-          id=""
-          placeholder="Cupo total"
-          required
-        />
-        <div>
-          <input
-            type="email"
-            value={emailStore}
-            onChange={(e) => setEmailStore(e.target.value)}
-            placeholder="Email"
-            required
-          />
-          <input
-            type="text"
-            value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
-            name=""
-            id=""
-            placeholder="Movil"
-            required
-          />
+    <div className="container-register">
+      <div className="register-card">
+        <div className="logo-partiaf">
+          <img src="./assets/logo-partiaf.svg" alt="logo" />
         </div>
-        <CardLocation />
-        <div>
-          <input
-            type="number"
-            value={employes}
-            onChange={(e) => setEmployes(e.target.value)}
-            placeholder="N° de empleados"
-            required
-          />
-          <input
-            type="text"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            name=""
-            id=""
-            placeholder="Direccion"
-            required
-          />
-        </div>
-
-        <p>Ingrese contrseña y confirme</p>
-        <div>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Contraseña"
-            required
-          />
-          <input type="password" placeholder="Confirmar contraseña" />
-        </div>
-
-        <input
-          type="file"
-          name=""
-          className="file-input"
-          id=""
-          onChange={(e) => uploadHandler(e, "featuredImage")}
-        />
-        <div className="store-images">
-          {images.map((image) => (
-            <div className="image">
-              <img src={image} alt="" />
-              <button
-                className="store-image-btn"
-                onClick={(e) => removeImage(e, image)}
-              >
-                X
-              </button>
-            </div>
-          ))}
-        </div>
-
-        <span className="term">
-          Al registrase usted acepta los terminos y condiciones del servicio de
-          PARTIAF
-        </span>
-        <a href="/" className="register-link">
-          ¿Ya tiene una cuenta, desea iniciar sesión?
+        <a href="/" className="back">
+          <img src="./assets/left-back.svg" alt="back" />
+          Atras
         </a>
+        <div className="form">
+          <form className="register-form" onSubmit>
+            <div className="register-date">
+              <div className="info-register">
+                <h5>Datos del establecimiento</h5>
+                <input
+                  type="text"
+                  placeholder="Nombre"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+                <select
+                  className="select-store"
+                  name=""
+                  id=""
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
+                  required
+                >
+                  <option value="">Tipo de Establecimiento</option>
+                  <option value="Discoteca">Discoteca</option>
+                  <option value="Bar">Bar</option>
+                  <option value="Gastrobar">Gastrobar</option>
+                </select>
+              </div>
+              <div className="photo">
+                <h5>Foto de perfil</h5>
+                <div className="container-photo">
+                  <button className="contenedor-btn-file">
+                    <img src="./assets/add-photo.svg" alt="profile-picture" />
+                    <input
+                      type="file"
+                      id="btn-file"
+                      onChange={(e) => uploadHandler(e, "featuredImage")}
+                      required
+                    />
+                  </button>
+                </div>
+              </div>
+              <input
+                type="number"
+                placeholder="NIT (opcional)"
+                value={nit}
+                onChange={(e) => setNit(e.target.value)}
+              />
+              <input
+                type="number"
+                placeholder="N° Empleados"
+                value={employes}
+                onChange={(e) => setEmployes(e.target.value)}
+                required
+              />
+              <input
+                type="number"
+                placeholder="Cupo total"
+                value={totalLimit}
+                onChange={(e) => setTotalLimit(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                placeholder="Direccion"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                required
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                value={emailStore}
+                onChange={(e) => setEmailStore(e.target.value)}
+                required
+              />
+              <input
+                type="number"
+                placeholder="movil"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
+                required
+              />
+            </div>
 
-        <div className="footer">
-          <Link to="/">
-            <button className="btn-normal">Atras</button>
-          </Link>
-          <button>Siguiente</button>
+            <h5>Ingrese una contraseña</h5>
+            <div className="personal-data">
+              <input
+                type="text"
+                placeholder="Contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <input type="text" placeholder="Confirmar contraseña" required />
+            </div>
+
+            <div className="container-btn">
+              <input
+                type="submit"
+                value="Siguiente"
+                className="black-button-bss"
+                onClick={() => submitHandler()}
+              />
+            </div>
+            <span>
+              Al registrarse usted acepta los términos y condiciones del
+              servicio de PARTIAF
+            </span>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

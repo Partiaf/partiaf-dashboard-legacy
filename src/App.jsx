@@ -19,6 +19,7 @@ import ChairsScreen from "./screens/ChairsScreen";
 import SettingScreen from "./screens/SettingScreen";
 import SettingStoreScreen from "./screens/SettingStoreScreen";
 import "./styles/variables.css"
+import RegisterBussines from "./screens/RegisterBussines";
 
 function App() {
   const adminSignin = useSelector((state) => state.adminSignin);
@@ -54,7 +55,7 @@ function App() {
           <LayoutHome>
             <Switch>
               <Route path="/" component={BusinessScreen} exact></Route>
-              <Route path="/store" component={StoreScreen} exact></Route>
+              <Route path="/store" component={RegisterBussines} exact></Route>
             </Switch>
           </LayoutHome>
         ) : (

@@ -54,6 +54,11 @@ export default function BusinessScreen(props) {
         <div className="welcome-card">
           <div className="container-logo">
             <img src="./assets/logo-partiaf.svg" alt="logo" />
+
+            <button className="gray-btn" onClick={signoutHandler}>
+              <img src="/assets/logout.svg" alt="log" />
+              Cerrar sesion
+            </button>
           </div>
 
           <div className="info-welcome">
@@ -64,6 +69,11 @@ export default function BusinessScreen(props) {
               {adminInfo.name} {adminInfo.lastname}
             </p>
             <span>Por favor selecciona tu negocio</span>
+            <div className="container-btn">
+              <Link to="/store" className="black-btn">
+                Añadir negocio
+              </Link>
+            </div>
             {loading ? (
               <LoadingBox />
             ) : (
@@ -85,14 +95,6 @@ export default function BusinessScreen(props) {
                 )}
               </>
             )}
-            <div className="container-btn">
-              <Link to="/store" className="black-btn">
-                Añadir negocio
-              </Link>
-              <button className="gray-btn" onClick={signoutHandler}>
-                Cerrar sesion
-              </button>
-            </div>
           </div>
         </div>
       </div>
