@@ -183,13 +183,13 @@ export default function RegisterBussines(props) {
             <h5>Ingrese una contraseña</h5>
             <div className="personal-data">
               <input
-                type="text"
+                type="password"
                 placeholder="Contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <input type="text" placeholder="Confirmar contraseña" required />
+              <input type="password" placeholder="Confirmar contraseña" required />
             </div>
 
             <div className="container-btn">

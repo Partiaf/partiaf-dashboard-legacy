@@ -180,7 +180,7 @@ export default function RegisterScreen(props) {
             <h5>Ingrese una contraseña</h5>
             <div className="personal-data">
               <input
-                type="text"
+                type="password"
                 placeholder="Contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -188,7 +188,7 @@ export default function RegisterScreen(props) {
               />
               <input
                 className={password == confirmPassword ? "" : "warning"}
-                type="text"
+                type="password"
                 placeholder="Confirmar contraseña"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}

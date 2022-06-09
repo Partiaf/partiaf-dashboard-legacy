@@ -64,7 +64,7 @@ export default function LoginScreen(props) {
             />
             {error == "User dont exits" && <ErrorBox error={error} />}
             <input
-              type="text"
+              type="password"
               placeholder="Contrasena"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
