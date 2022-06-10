@@ -21,7 +21,7 @@ const VerificationScreen = (props) => {
 
   const activeEmailFetch = () => {
     if (error === "Codigo no valido") {
-      swal("CODIGO INCORRECTO", {
+      swal(error, {
         icon: "warning",
         buttons: "Reintentar",
         dangerMode: true,
