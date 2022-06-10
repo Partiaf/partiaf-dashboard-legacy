@@ -135,7 +135,7 @@ export default function RegisterScreen(props) {
                       <LoadingBox />
                     ) : (
                       <img 
-                        className={photo ? "" : "photo-preview"}
+                        className={photo ? "" : "image-preview"}
                         src={photo ? photo : "./assets/add-photo.svg"}
                         alt="profile-picture"
                       />
