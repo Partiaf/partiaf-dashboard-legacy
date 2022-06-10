@@ -76,12 +76,7 @@
   cursor: pointer;
 }
 
-.image-preview{
-  position: relative;
-  width: 5rem !important;
-  height: 5rem !important;
-  
-}
+
 
 .select-type-doc{
     width: 27rem;
@@ -144,4 +139,11 @@
 .container-register span {
   font-size: 1.2rem;
   color: var(--gray);
+}
+
+.image-preview{
+  position: relative;
+  width: 5rem !important;
+  height: 5rem !important;
+  
 }

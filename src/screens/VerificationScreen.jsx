@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { activeEmail } from "../actions/adminActions";
+import swal from "sweetalert";
 import "../styles/verification.css";
 
 const VerificationScreen = (props) => {
@@ -16,26 +17,30 @@ const VerificationScreen = (props) => {
 
   const adminActiveEmail = useSelector((state) => state.adminActiveEmail);
   const { loading, error, success } = adminActiveEmail;
-  console.log("POR FUERA", success)
- 
+  console.log("VERIFICATION", error);
 
   const activeEmailFetch = () => {
-    const code = num1 + num2 + num3 + num4 + num5 + num6;
-    console.log(code);
-    dispatch(activeEmail(code));
+    if (error === "Codigo no valido") {
+      swal("CODIGO INCORRECTO", {
+        icon: "warning",
+        buttons: "Reintentar",
+        dangerMode: true,
+      });
+    } else {
+      const code = num1 + num2 + num3 + num4 + num5 + num6;
+      console.log(code);
+      dispatch(activeEmail(code));
+    }
   };
 
-  const navigate = useHistory()
+  const navigate = useHistory();
 
   useEffect(() => {
-    console.log(success)
-    if(success){
-      props.history.push("/")
+    console.log(success);
+    if (success) {
+      props.history.push("/");
     }
- 
-  },[success])
-
-
+  }, [success]);
 
   return (
     <div className="container-verification">
