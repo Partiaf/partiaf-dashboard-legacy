@@ -55,6 +55,9 @@
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+
 }
 
 .container-btn button {
@@ -103,4 +106,8 @@
   color: rgba(0, 0, 0, 0.8);
   width: 40rem;
   
+}
+
+.dont-business{
+  font-size: 1.4rem;
 }

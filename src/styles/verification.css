@@ -34,7 +34,7 @@
 
 .info-verification span {
   font-size: 1.2rem;
-  color: var(--gray);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .container-verification input{

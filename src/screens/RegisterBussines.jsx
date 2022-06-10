@@ -15,7 +15,7 @@ export default function RegisterBussines(props) {
   const { loading, error, success: successCreate } = storeCreate;
 
   const [name, setName] = useState("");
-  const [type, setType] = useState("Discoteca");
+  const [type, setType] = useState("");
   const [nit, setNit] = useState("");
   const [mobile, setMobile] = useState("");
   const [employes, setEmployes] = useState("");
@@ -97,7 +97,7 @@ export default function RegisterBussines(props) {
           <img src="./assets/left-back.svg" alt="back" />
           Atras
         </a>
-        <div className="form">
+        <div className="form-register">
           <form className="register-form" onSubmit>
             <div className="register-date">
               <div className="info-register">
@@ -127,7 +127,16 @@ export default function RegisterBussines(props) {
                 <h5>Foto de perfil</h5>
                 <div className="container-photo">
                   <button className="contenedor-btn-file">
-                    <img src="./assets/add-photo.svg" alt="profile-picture" />
+                    
+                  {loading ? (
+                      <LoadingBox />
+                    ) : (
+                      <img 
+                        className={images.length >0 ? "" : "image-preview"}
+                        src={images.length >0 ? images[0] : "./assets/add-photo.svg"}
+                        alt="profile-picture"
+                      />
+                    )}
                     <input
                       type="file"
                       id="btn-file"

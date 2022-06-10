@@ -91,7 +91,7 @@ export default function BusinessScreen(props) {
                     ))}
                   </div>
                 ) : (
-                  <h3>No hay Negocios</h3>
+                  <h3 className="dont-business">No hay Negocios</h3>
                 )}
               </>
             )}

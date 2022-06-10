@@ -26,6 +26,36 @@ a{
   text-decoration: none;
 }
 
-input{
+input[type="text"]{
   cursor: text;
+}
+
+input[type="password"]{
+  cursor: text;
+}
+
+input[type="number"]{
+  cursor: text;
+}
+
+.alert {
+  padding: 1rem;
+  border: 0.1rem solid transparent;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+.alert-info {
+  color: #2020a0;
+  background-color: #e0e0ff;
+}
+.alert-danger {
+  color: #a02020;
+  background-color: #ffe0e0;
+}
+.alert-success {
+  color: #20a020;
+  background-color: #eeffe0;
 }

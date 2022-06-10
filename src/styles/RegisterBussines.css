@@ -21,14 +21,6 @@
   margin-bottom: 2rem;
 }
 
-.register-card {
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
-  width: 631px;
-  height: 670px;
-  padding: 3rem;
-  margin: 0 auto;
-  border-radius: 0.3rem;
-}
 
 .logo-partiaf {
   height: 38px;
@@ -117,13 +109,6 @@
   gap: 1rem;
 }
 
-.container-btn {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-  width: 566px;
-  height: 40px;
-}
 
 .container-btn input{
     width: 60rem;

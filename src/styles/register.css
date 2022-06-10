@@ -9,8 +9,8 @@
 
 .register-card {
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
-  width: 63rem;
-  height: 72rem;
+  width: 65rem;
+  height: 73rem;
   padding: 3rem;
   margin: 0 auto;
   border-radius: 0.3rem;
@@ -146,4 +146,9 @@
   width: 5rem !important;
   height: 5rem !important;
   
+}
+
+.form-register{
+  margin: 0;
+
 }

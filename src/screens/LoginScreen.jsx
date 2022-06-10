@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { signin } from "../actions/adminActions";
 import ErrorBox from "../components/ErrorBox";
 import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
 import "../styles/login.css"
 
-export default function LoginScreen(props) {
+export default function LoginScreen() {
   
-  const adminSignin = useSelector((state) => state.adminSignin);
-  const { loading, error } = adminSignin;
-
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useDispatch();
+  const {search} = useLocation();
+  const redirectInUrl = new URLSearchParams(search).get('redirect');
+  const redirect = redirectInUrl? redirectInUrl : "/";
 
+  const adminSignin = useSelector((state) => state.adminSignin);
+  const { loading, error, adminInfo } = adminSignin;
+
+  const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
     if (email.length === 0 && password.length === 0) {
@@ -38,11 +43,16 @@ export default function LoginScreen(props) {
       if (error) {
         console.log(error);
       } else {
-        props.history.push("/");
         dispatch(signin(email.toLowerCase(), password));
       }
     }
   };
+
+  useEffect(() => {
+    if(adminInfo){
+      navigate(redirect)
+    }
+  }, [navigate, redirect, adminInfo])
 
   return (
     <div className="container-login">
@@ -53,6 +63,7 @@ export default function LoginScreen(props) {
           <div className="container-logo">
             <img src="./assets/logo-partiaf.svg" alt="logo" />
           </div>
+          {error && <MessageBox variant="danger">{error}</MessageBox>}
           <h3 className="signin-title">Ingresa tus datos</h3>
           <form className="signin-form" onSubmit={submitHandler}>
             <input

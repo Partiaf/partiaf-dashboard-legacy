@@ -107,7 +107,7 @@ export default function RegisterScreen(props) {
         <div className="logo-partiaf">
           <img src="./assets/logo-partiaf.svg" alt="logo" />
         </div>
-        <div className="form">
+        <div className="form-register">
           <form className="register-form" onSubmit={submitHandler}>
             <div className="register-date">
               <div className="info-register">

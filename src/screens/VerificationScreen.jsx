@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { activeEmail } from "../actions/adminActions";
 import swal from "sweetalert";
 import "../styles/verification.css";
+import { useNavigate } from "react-router-dom";
 
 const VerificationScreen = (props) => {
   const dispatch = useDispatch();
@@ -14,6 +14,9 @@ const VerificationScreen = (props) => {
   const [num4, setNum4] = useState("");
   const [num5, setNum5] = useState("");
   const [num6, setNum6] = useState("");
+
+  const adminSignin = useSelector((state) => state.adminSignin);
+  const { adminInfo } = adminSignin;
 
   const adminActiveEmail = useSelector((state) => state.adminActiveEmail);
   const { loading, error, success } = adminActiveEmail;
@@ -33,14 +36,15 @@ const VerificationScreen = (props) => {
     }
   };
 
-  const navigate = useHistory();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(success);
     if (success) {
-      props.history.push("/");
+      navigate("/");
     }
-  }, [success]);
+  }, [success, navigate]);
 
   return (
     <div className="container-verification">
@@ -51,7 +55,7 @@ const VerificationScreen = (props) => {
 
         <div className="info-verification">
           <p>Te enviamos un codigo para verificar tu correo electronico</p>
-          <span>Enviado a "correoalqueseenvio@gmail.com"</span>
+          <span>Enviado a {adminInfo.email}</span>
           <div>
             <form className="form">
               <input

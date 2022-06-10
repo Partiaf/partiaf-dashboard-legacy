@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import BookingScreen from "./screens/BookingScreen";
 import BusinessScreen from "./screens/BusinessScreen";
@@ -34,7 +34,7 @@ function App() {
       <>
         {adminInfo && storeInfo && !loading ? (
           <Layout>
-            <Switch>
+            <Routes>
               <Route path="/home" component={ComingSoon} exact></Route>
               <Route path="/booking" component={BookingScreen} exact></Route>
               <Route path="/menu" component={MenuScreen} exact></Route>
@@ -49,24 +49,24 @@ function App() {
                 component={SettingStoreScreen}
                 exact
               ></Route>
-            </Switch>
+            </Routes>
             {/* <Route path="/" component={ComingSoon} exact></Route>   */}
           </Layout>
         ) : adminInfo ? (
           <LayoutHome>
-            <Switch>
-              <Route path="/" component={BusinessScreen} exact></Route>
-              <Route path="/store" component={RegisterBussines} exact></Route>
-              <Route path="/verification" component={VerificationScreen} exact></Route>
-            </Switch>
+            <Routes>
+              <Route path="/" element={<BusinessScreen/>} exact></Route>
+              <Route path="/store" element={<RegisterBussines/>} exact></Route>
+              <Route path="/verification" element={<VerificationScreen/>} exact></Route>
+            </Routes>
           </LayoutHome>
         ) : (
-          <>
-            <Route path="/" component={LoginScreen} exact></Route>
-            <Route path="/register" component={RegisterScreen} exact></Route>
-            <Route path="/settings" component={SettingsScreen} exact></Route>
+          <Routes>
+            <Route path="/" element={<LoginScreen/>} exact></Route>
+            <Route path="/register" element={<RegisterScreen/>} exact></Route>
+            <Route path="/settings" element={<SettingsScreen />} exact></Route>
             
-          </>
+          </Routes>
         )}
       </>
     </BrowserRouter>

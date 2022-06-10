@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./styles/main.css";
 import "./styles/screen.css";
@@ -11,7 +11,9 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import esLocale from "date-fns/locale/es";
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
   <Provider store={store}>
     <React.StrictMode>
       <MuiPickersUtilsProvider utils={DateFnsUtils} locale={esLocale}>
@@ -19,7 +21,6 @@ ReactDOM.render(
       </MuiPickersUtilsProvider>
     </React.StrictMode>
   </Provider>,
-  document.getElementById("root")
 );
 
 
