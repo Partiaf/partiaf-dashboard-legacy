@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const VerificationScreen = (props) => {
   const dispatch = useDispatch();
 
-  const [num1, setNum1] = useState("");
+  const [code, setCode] = useState("");
   const [num2, setNum2] = useState("");
   const [num3, setNum3] = useState("");
   const [num4, setNum4] = useState("");
@@ -30,7 +30,7 @@ const VerificationScreen = (props) => {
         dangerMode: true,
       });
     } else {
-      const code = num1 + num2 + num3 + num4 + num5 + num6;
+      // const code = num1 + num2 + num3 + num4 + num5 + num6;
       console.log(code);
       dispatch(activeEmail(code));
     }
@@ -60,13 +60,14 @@ const VerificationScreen = (props) => {
             <form className="form">
               <input
                 type="text"
-                maxLength={1}
+                maxLength={6}
                 pattern="\d*"
-                value={num1}
-                onChange={(e) => setNum1(e.target.value)}
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
                 required
+                className="lex-input"
               />
-              <input
+              {/* <input
                 type="text"
                 maxLength={1}
                 pattern="\d*"
@@ -105,7 +106,7 @@ const VerificationScreen = (props) => {
                 value={num6}
                 onChange={(e) => setNum6(e.target.value)}
                 required
-              />
+              /> */}
             </form>
           </div>
           <p>¡No recibi un codigo!</p>
