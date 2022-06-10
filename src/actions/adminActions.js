@@ -43,7 +43,7 @@ const URL = "https://partiaf-api-recache.herokuapp.com/api/v2";
 export const signin = (email, password) => async (dispatch) => {
   dispatch({ type: ADMIN_SIGNIN_REQUEST, payload: { email, password } });
   try {
-    const { data } = await Axios.post(`${URL}/admins/signin`, {
+    const { data } = await Axios.post(`${URL}/signin`, {
       email,
       password,
     });
@@ -72,7 +72,7 @@ export const signup =
     age,
     address,
     password,
-    image,
+    photo,
     gender,
     date_of_birth
 
@@ -90,7 +90,7 @@ export const signup =
         age,
         address,
         password,
-        image,
+        photo,
         gender,
         date_of_birth
       },
@@ -106,7 +106,7 @@ export const signup =
         age,
         address,
         password,
-        image,
+        photo,
         gender,
         date_of_birth
       });

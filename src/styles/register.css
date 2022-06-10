@@ -76,6 +76,13 @@
   cursor: pointer;
 }
 
+.image-preview{
+  position: relative;
+  width: 5rem !important;
+  height: 5rem !important;
+  
+}
+
 .select-type-doc{
     width: 27rem;
     height: 4rem;

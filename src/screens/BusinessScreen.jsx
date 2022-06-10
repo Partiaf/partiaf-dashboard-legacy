@@ -63,10 +63,10 @@ export default function BusinessScreen(props) {
 
           <div className="info-welcome">
             <h1>¡Bienvenido!</h1>
-            <img src={adminInfo.image} alt="" />
+            <img src={adminInfo.photo} alt="" />
             <p>
               {" "}
-              {adminInfo.name} {adminInfo.lastname}
+              {adminInfo.firstname} {adminInfo.lastname}
             </p>
             <span>Por favor selecciona tu negocio</span>
             <div className="container-btn">

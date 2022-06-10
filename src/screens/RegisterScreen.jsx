@@ -11,17 +11,18 @@ import LoadingBoxWhite from "../components/LoadingBoxWhite";
 import "../styles/register.css";
 
 export default function RegisterScreen(props) {
+  
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
-  const [identificationType, setIdentificationType] = useState("");
+  const [identificationType, setIdentificationType] = useState("CC");
   const [identification, setIdentification] = useState("");
-  const [image, setImage] = useState("");
+  const [photo, setPhoto] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [address, setAddress] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("Masculino");
   const [dateOfBirth, setDateOfBirth] = useState("");
 
   const [password, setPassword] = useState("");
@@ -31,8 +32,8 @@ export default function RegisterScreen(props) {
 
   console.log(loading);
 
-  // UPLOAD IMAGE HANDLER
-  const uploadHandler = async (e, imageFIeld = "image") => {
+  // UPLOAD photo HANDLER
+  const uploadHandler = async (e, photoFIeld = "photo") => {
     const file = e.target.files[0];
     const bodyFormData = new FormData();
     bodyFormData.append("file", file);
@@ -48,7 +49,7 @@ export default function RegisterScreen(props) {
         }
       );
       dispatch({ type: "UPLOAD_SUCCESS" });
-      setImage(data.secure_url);
+      setPhoto(data.secure_url);
     } catch (err) {
       console.log(err);
     }
@@ -58,6 +59,7 @@ export default function RegisterScreen(props) {
 
   const adminSignin = useSelector((state) => state.adminSignin);
   const { adminInfo } = adminSignin;
+  
 
   const storeSignin = useSelector((state) => state.storeSignin);
   const { storeInfo } = storeSignin;
@@ -77,7 +79,7 @@ export default function RegisterScreen(props) {
         age,
         address,
         password,
-        image,
+        photo,
         gender,
         dateOfBirth
       )
@@ -132,8 +134,9 @@ export default function RegisterScreen(props) {
                     {loading ? (
                       <LoadingBox />
                     ) : (
-                      <img
-                        src={image ? image : "./assets/add-photo.svg"}
+                      <img 
+                        className={photo ? "" : "photo-preview"}
+                        src={photo ? photo : "./assets/add-photo.svg"}
                         alt="profile-picture"
                       />
                     )}
@@ -142,7 +145,7 @@ export default function RegisterScreen(props) {
                       type="file"
                       name="file"
                       id="btn-file"
-                      onChange={(e) => uploadHandler(e, "featuredImage")}
+                      onChange={(e) => uploadHandler(e, "featuredphoto")}
                     />
                   </div>
                 </div>
