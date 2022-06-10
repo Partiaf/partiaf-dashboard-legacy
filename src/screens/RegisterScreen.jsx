@@ -11,15 +11,18 @@ import LoadingBoxWhite from "../components/LoadingBoxWhite";
 import "../styles/register.css";
 
 export default function RegisterScreen(props) {
-  const [name, setName] = useState("");
+  const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
+  const [identificationType, setIdentificationType] = useState("");
   const [identification, setIdentification] = useState("");
   const [image, setImage] = useState("");
   const [email, setEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [address, setAddress] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [gender, setGender] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
 
   const [password, setPassword] = useState("");
 
@@ -65,15 +68,18 @@ export default function RegisterScreen(props) {
     e.preventDefault();
     dispatch(
       signup(
-        name,
+        firstname,
         lastname,
+        identificationType,
         identification,
         email,
-        mobile,
+        phone,
         age,
         address,
         password,
-        image
+        image,
+        gender,
+        dateOfBirth
       )
     );
     // if (adminInfo) {
@@ -107,8 +113,8 @@ export default function RegisterScreen(props) {
                 <input
                   type="text"
                   placeholder="Nombre"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  value={firstname}
+                  onChange={(e) => setFirstname(e.target.value)}
                   required
                 />
                 <input
@@ -123,7 +129,15 @@ export default function RegisterScreen(props) {
                 <h5>Foto de perfil</h5>
                 <div className="container-photo">
                   <div className="contenedor-btn-file">
-                    <img src={image? image : "./assets/add-photo.svg" } alt="profile-picture" />
+                    {loading ? (
+                      <LoadingBox />
+                    ) : (
+                      <img
+                        src={image ? image : "./assets/add-photo.svg"}
+                        alt="profile-picture"
+                      />
+                    )}
+
                     <input
                       type="file"
                       name="file"
@@ -136,7 +150,13 @@ export default function RegisterScreen(props) {
             </div>
             <h5>Tipo de documento</h5>
             <div className="personal-data">
-              <select className="select-type-doc" name="" id="" required>
+              <select
+                className="select-type-doc"
+                name=""
+                id=""
+                onChange={(e) => setIdentificationType(e.target.value)}
+                required
+              >
                 <option value="CC">Cedula de ciudadania</option>
                 <option value="CE">Cedula de extranjeria</option>
                 <option value="PS">Pasaporte</option>
@@ -158,8 +178,8 @@ export default function RegisterScreen(props) {
               <input
                 type="number"
                 placeholder="Telefono"
-                value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 required
               />
               <input
@@ -176,6 +196,24 @@ export default function RegisterScreen(props) {
                 onChange={(e) => setAddress(e.target.value)}
                 required
               />
+              <input
+                type="date"
+                placeholder="Fecha de cumpleaños"
+                value={dateOfBirth}
+                onChange={(e) => setDateOfBirth(e.target.value)}
+                required
+              />
+              <select
+                className="select-type-doc"
+                name=""
+                id=""
+                onChange={(e) => setGender(e.target.value)}
+                required
+              >
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otros">Otros</option>
+              </select>
             </div>
             <h5>Ingrese una contraseña</h5>
             <div className="personal-data">

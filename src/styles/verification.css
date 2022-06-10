@@ -1,0 +1,87 @@
+.container-verification {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.verification-card {
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.15);
+  width: 631px;
+  height: 670px;
+  padding: 3rem;
+  margin: 0 auto;
+  border-radius: 0.3rem;
+}
+
+.container-logo {
+  display: flex;
+  margin-bottom: 6rem;
+  height: 38px;
+}
+
+.info-verification {
+  text-align: center;
+}
+
+.info-verification p {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+}
+
+.info-verification span {
+  font-size: 1.2rem;
+  color: var(--gray);
+}
+
+.container-verification input{
+    width: 4rem;
+    height: 4rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border: none;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+
+.container-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.container-btn button {
+  width: 40rem;
+  height: 4rem;
+  border-radius: 0.3rem;
+  border: none;
+}
+
+.black-btn {
+  background-color: var(--black);
+  color: var(--white-color);
+  border-radius: .3rem;
+  border: none;
+}
+
+.text-reenviar{
+    color: var(--main-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+

@@ -20,6 +20,7 @@ import SettingScreen from "./screens/SettingScreen";
 import SettingStoreScreen from "./screens/SettingStoreScreen";
 import "./styles/variables.css"
 import RegisterBussines from "./screens/RegisterBussines";
+import VerificationScreen from "./screens/VerificationScreen";
 
 function App() {
   const adminSignin = useSelector((state) => state.adminSignin);
@@ -56,6 +57,7 @@ function App() {
             <Switch>
               <Route path="/" component={BusinessScreen} exact></Route>
               <Route path="/store" component={RegisterBussines} exact></Route>
+              <Route path="/verification" component={VerificationScreen} exact></Route>
             </Switch>
           </LayoutHome>
         ) : (
@@ -63,6 +65,7 @@ function App() {
             <Route path="/" component={LoginScreen} exact></Route>
             <Route path="/register" component={RegisterScreen} exact></Route>
             <Route path="/settings" component={SettingsScreen} exact></Route>
+            
           </>
         )}
       </>

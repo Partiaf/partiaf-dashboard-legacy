@@ -165,3 +165,16 @@ export const updateStoreCoverReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export const adminActiveEmailReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "ADMIN_ACTIVE_EMAIL_REQUEST":
+      return { loading: true };
+    case "ADMIN_ACTIVE_EMAIL_SUCCESS":
+      return { loading: false, success: true };
+    case "ADMIN_ACTIVE_EMAIL_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

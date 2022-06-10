@@ -38,7 +38,7 @@ import {
 } from "../constants/adminConstants";
 
 // const URL = "http://localhost:4300/api/v1";
-const URL = "https://partiaf-api-v2.herokuapp.com/api/v1";
+const URL = "https://partiaf-api-recache.herokuapp.com/api/v2";
 
 export const signin = (email, password) => async (dispatch) => {
   dispatch({ type: ADMIN_SIGNIN_REQUEST, payload: { email, password } });
@@ -63,48 +63,58 @@ export const signin = (email, password) => async (dispatch) => {
 
 export const signup =
   (
-    name,
+    firstname,
     lastname,
+    identificationType,
     identification,
     email,
-    mobile,
+    phone,
     age,
     address,
     password,
-    image
+    image,
+    gender,
+    date_of_birth
+
   ) =>
   async (dispatch) => {
     dispatch({
       type: ADMIN_REGISTER_REQUEST,
       payload: {
-        name,
+        firstname,
         lastname,
+        identificationType,
         identification,
         email,
-        mobile,
+        phone,
         age,
         address,
         password,
         image,
+        gender,
+        date_of_birth
       },
     });
     try {
-      const { data } = await Axios.post(`${URL}/admins/signout`, {
-        name,
+      const { data } = await Axios.post(`${URL}/signup`, {
+        firstname,
         lastname,
+        identificationType,
         identification,
         email,
-        mobile,
+        phone,
         age,
         address,
         password,
         image,
+        gender,
+        date_of_birth
       });
 
       dispatch({ type: ADMIN_REGISTER_SUCCESS, payload: data });
       dispatch({ type: ADMIN_SIGNIN_SUCCESS, payload: data });
       localStorage.setItem("adminInfo", JSON.stringify(data));
-      document.location.href = "/";
+      document.location.href = "/verification";
     } catch (error) {
       dispatch({
         type: ADMIN_REGISTER_FAIL,
@@ -115,6 +125,24 @@ export const signup =
       });
     }
   };
+
+
+export const activeEmail = (code) => async (dispatch)  => {
+  dispatch({ type: "ADMIN_ACTIVE_EMAIL_REQUEST", payload: { code } });
+  try {
+    const { data } = await Axios.post(`${URL}/activate-email`, { code });
+    dispatch({ type: "ADMIN_ACTIVE_EMAIL_SUCCESS", payload: data });
+    
+  } catch (error) {
+    dispatch({
+      type: "ADMIN_ACTIVE_EMAIL_FAIL",
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+}
 
 export const signout = () => (dispatch) => {
   localStorage.removeItem("adminInfo");

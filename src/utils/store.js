@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, createStore, compose } from "redux";
 import thunk from "redux-thunk";
 import { userSigninReducer } from "../reducers/userReducer.js";
 import {
+  adminActiveEmailReducer,
   adminSigninReducer,
   coverListReducer,
   createStoreCoverReducer,
@@ -38,6 +39,7 @@ const initialState = {
 };
 
 const reducer = combineReducers({
+  
   userSignin: userSigninReducer,
   adminSignin: adminSigninReducer,
   storeCreate: createStoreReducer,
@@ -73,6 +75,8 @@ const reducer = combineReducers({
   chairCreate: chairReducer.createReducer,
   chairUpdate: chairReducer.updateReducer,
   chairDelete: chairReducer.deleteReducer,
+
+  adminActiveEmail : adminActiveEmailReducer,
 
   uploadImage: generalReducer,
 });

@@ -1,12 +1,14 @@
 header {
   position: relative;
-  left: 10rem;
-  background-color: red;
+  left: 18rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  width: calc(100% - 10rem);
+  width: calc(100% - 18rem);
   color: #f2f6fa;
   /* height: 8vh; */
   padding: 1rem 2rem;
+  display: flex;
+  justify-content: right;
+  border: none;
 }
 
 nav {
