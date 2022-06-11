@@ -40,11 +40,9 @@ export default function LoginScreen() {
         dangerMode: true,
       });
     } else {
-      if (error) {
-        console.log(error);
-      } else {
+      
         dispatch(signin(email.toLowerCase(), password));
-      }
+
     }
   };
 
