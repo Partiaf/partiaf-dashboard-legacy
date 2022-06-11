@@ -9,11 +9,10 @@ aside {
   z-index: 999999999999;
 }
 
-aside .logo-navigation {
-  width: 40%;
+aside .logo-navigation img{
+  width: 100%;
   padding: 2rem;
   margin-top: 1rem;
-  filter: invert(1);
 }
 
 aside ul {

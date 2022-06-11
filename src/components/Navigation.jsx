@@ -8,7 +8,7 @@ export default function Navigation() {
   return (
     <aside>
       <div className="logo-navigation">
-        <img src="./assets/partiaf-white.svg" alt="logo" />
+        <img src="./assets/logo-partiaf.svg" alt="logo" />
       </div>
       <ul>
         {/* <Link to="/" onClick={() => setActive('notifications')} className={active === "notifications"? "navigation__item active"
