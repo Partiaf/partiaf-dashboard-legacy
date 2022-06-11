@@ -104,7 +104,7 @@ export default function RegisterBussines(props) {
 
   useEffect(() => {
     if (successCreate) {
-      navigate("/home");
+      navigate("/");
     }
   }, [successCreate]);
 
