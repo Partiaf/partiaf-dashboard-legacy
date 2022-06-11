@@ -3,6 +3,8 @@ import thunk from "redux-thunk";
 import { userSigninReducer } from "../reducers/userReducer.js";
 import {
   adminActiveEmailReducer,
+  adminChangePasswordReducer,
+  adminResetPasswordReducer,
   adminSigninReducer,
   coverListReducer,
   createStoreCoverReducer,
@@ -85,6 +87,10 @@ const reducer = combineReducers({
     // chairDelete: chairReducer.deleteReducer,
 
   adminActiveEmail : adminActiveEmailReducer,
+  adminResetPassword : adminResetPasswordReducer,
+  adminChangePassword : adminChangePasswordReducer,
+
+
 
   storeAddressMap: storeAddressMapReducer,
 

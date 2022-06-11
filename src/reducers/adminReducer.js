@@ -50,6 +50,21 @@ export const adminSigninReducer = (state = {}, action) => {
   }
 };
 
+
+export const adminResetPasswordReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'ADMIN_RESET_PASSWORD_REQUEST':
+      return { loading: true };
+    case 'ADMIN_RESET_PASSWORD_SUCCESS':
+      return { loading: false, adminInfo: action.payload };
+    case 'ADMIN_RESET_PASSWORD_FAIL':
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+
 export const createStoreReducer = (state = {}, action) => {
   switch (action.type) {
     case CREATE_STORE_REQUEST:
@@ -173,6 +188,20 @@ export const adminActiveEmailReducer = (state = {}, action) => {
     case "ADMIN_ACTIVE_EMAIL_SUCCESS":
       return { loading: false, success: true };
     case "ADMIN_ACTIVE_EMAIL_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+
+export const adminChangePasswordReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "ADMIN_CHANGE_PASSWORD_REQUEST":
+      return { loading: true };
+    case "ADMIN_CHANGE_PASSWORD_SUCCESS":
+      return { loading: false, success: true };
+    case "ADMIN_CHANGE_PASSWORD_FAIL":
       return { loading: false, error: action.payload };
     default:
       return state;

@@ -37,7 +37,7 @@ import {
   UPDATE_STORE_FAIL,
 } from "../constants/adminConstants";
 
-// const URL = "http://localhost:4300/api/v1";
+// const URL = "http://localhost:5000/api/v2";
 const URL = "https://partiaf-api-recache.herokuapp.com/api/v2";
 
 export const signin = (email, password) => async (dispatch) => {
@@ -125,6 +125,73 @@ export const signup =
       });
     }
   };
+
+  export const resetPassword =
+  (
+    email,
+
+  ) =>
+  async (dispatch) => {
+    dispatch({
+      type: "ADMIN_RESET_PASSWORD_REQUEST",
+      payload: {
+        email,
+      },
+    });
+    try {
+      const { data } = await Axios.post(`${URL}/reset-password`, {
+        email,
+      });
+
+      dispatch({ type: 'ADMIN_RESET_PASSWORD_SUCCESS', payload: data });
+      dispatch({ type: ADMIN_SIGNIN_SUCCESS, payload: data });
+      localStorage.setItem("adminInfo", JSON.stringify(data));
+      document.location.href = "/verification-reset";
+    } catch (error) {
+      dispatch({
+        type: 'ADMIN_RESET_PASSWORD_FAIL',
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
+
+  export const changePassword =
+  (
+    email,
+    password
+
+  ) =>
+  async (dispatch) => {
+    dispatch({
+      type: "ADMIN_CHANGE_PASSWORD_REQUEST",
+      payload: {
+        email,
+        password
+      },
+    });
+    try {
+      const { data } = await Axios.post(`${URL}/change-password`, {
+        email,
+        password
+      });
+
+      dispatch({ type: 'ADMIN_CHANGE_PASSWORD_SUCCESS', payload: data });
+      document.location.href = "/";
+    } catch (error) {
+      dispatch({
+        type: 'ADMIN_CHANGE_PASSWORD_FAIL',
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
+
 
 
 export const activeEmail = (code) => async (dispatch)  => {

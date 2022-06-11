@@ -23,6 +23,8 @@ import RegisterBussines from "./screens/RegisterBussines";
 import VerificationScreen from "./screens/VerificationScreen";
 import MapScreen from "./screens/MapScreen";
 import ResetPasswordScreen from "./screens/ResetPasswordScreen";
+import ChangePasswordScreen from "./screens/ChangePasswordScreen";
+import VerificationResetScreen from "./screens/VerificationResetScreen";
 
 function App() {
   const adminSignin = useSelector((state) => state.adminSignin);
@@ -61,6 +63,9 @@ function App() {
               <Route path="/store" element={<RegisterBussines/>} exact></Route>
               <Route path="/maps" element={<MapScreen/>} exact></Route>
               <Route path="/verification" element={<VerificationScreen/>} exact></Route>
+              <Route path="/verification-reset" element={<VerificationResetScreen/>} exact></Route>
+              <Route path="/change-password" element={<ChangePasswordScreen/>} exact></Route>
+            
             </Routes>
           </LayoutHome>
         ) : (

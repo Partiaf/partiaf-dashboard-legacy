@@ -156,3 +156,12 @@ input[type="number"]{
 .link-black{
   color: var(--black);
 }
+
+.label-input{
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+.form-control{
+  width: 100%;
+}
