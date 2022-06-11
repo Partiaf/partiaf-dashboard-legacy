@@ -138,6 +138,7 @@ export default function SettingsScreen(props) {
                 name=""
                 id=""
                 placeholder="Cupo total"
+                maxLength={10}
                 required
               />
               <input

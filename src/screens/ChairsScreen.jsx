@@ -61,7 +61,7 @@ export default function ChairsScreen() {
       dispatch(
         chairActions.create({
           email: adminInfo.email,
-          storeId: storeInfo.store._id,
+          storeId: storeInfo._id,
           type: type,
           limit: limit,
           price: price,
@@ -82,7 +82,7 @@ export default function ChairsScreen() {
           icon: "success",
         });
         dispatch(
-          chairActions.delete(chair._id, adminInfo.email, storeInfo.store._id)
+          chairActions.delete(chair._id, adminInfo.email, storeInfo._id)
         );
       }
     });
@@ -107,7 +107,7 @@ export default function ChairsScreen() {
         price: priceUpdate,
         _id: chairId,
         email: adminInfo.email,
-        storeId: storeInfo.store._id,
+        storeId: storeInfo._id,
       })
     );
   };
@@ -131,7 +131,7 @@ export default function ChairsScreen() {
       setOpenModalUpdate(false);
     }
     if (storeInfo) {
-      dispatch(chairActions.list(adminInfo.email, storeInfo.store._id));
+      dispatch(chairActions.list(adminInfo.email, storeInfo._id));
     }
 
     if (successDelete) {

@@ -55,7 +55,7 @@ export default function CoverCreateScreen() {
       dispatch(
         createStoreCover(
           adminInfo.email,
-          storeInfo.store._id,
+          storeInfo._id,
           type,
           date,
           hour.toLocaleTimeString(),
@@ -115,7 +115,7 @@ export default function CoverCreateScreen() {
                 <h3>Precio</h3>
                 <input
                   type="text"
-                  inputmode="numeric"
+                  inputMode="numeric"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />

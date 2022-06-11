@@ -18,7 +18,7 @@ export default function BuyScreen() {
 
   useEffect(() => {
     if (storeInfo) {
-      dispatch(buyActions.list(adminInfo.email, storeInfo.store._id));
+      dispatch(buyActions.list(adminInfo.email, storeInfo._id));
     }
   }, [dispatch]);
 

@@ -37,7 +37,7 @@ export default function BookingScreen() {
 
   useEffect(() => {
     if (storeInfo) {
-      dispatch(listBookings(adminInfo.email, storeInfo.store._id));
+      dispatch(listBookings(adminInfo.email, storeInfo._id));
     }
 
     if (successCreate) {

@@ -39,7 +39,7 @@ export default function CoverListScreen({ loading, covers, state }) {
           icon: "success",
         });
         dispatch(
-          deleteStoreCover(adminInfo.email, storeInfo.store._id, cover._id)
+          deleteStoreCover(adminInfo.email, storeInfo._id, cover._id)
         );
       }
     });

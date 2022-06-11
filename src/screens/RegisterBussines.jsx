@@ -161,6 +161,8 @@ export default function RegisterBussines(props) {
                   type="number"
                   placeholder="NIT (opcional)"
                   value={nit}
+                maxLength={10}
+
                   onChange={(e) => setNit(e.target.value)}
                 />
 

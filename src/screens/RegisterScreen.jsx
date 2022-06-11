@@ -167,6 +167,7 @@ export default function RegisterScreen(props) {
               <input
                 type="number"
                 placeholder="CC"
+                maxLength={10}
                 value={identification}
                 onChange={(e) => setIdentification(e.target.value)}
                 required

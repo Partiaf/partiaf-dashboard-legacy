@@ -28,7 +28,7 @@ export default function CoverUpdateScreen(cover) {
     dispatch(
       updatenStoreCover(
         adminInfo.email,
-        storeInfo.store._id,
+        storeInfo._id,
         cover.cover._id,
         type,
         date,
