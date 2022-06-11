@@ -23,20 +23,28 @@ export default function Header() {
     <header>
       <nav>
        
-        <div className={drop ? "dropdown active" : "dropdown"}>
-          <img className="user-image" src={adminInfo.image} alt="" />
+        <div className={drop ? "dropdown active" : "dropdown active"}>
+
+          <div className="header-user-info">
+            <h3 className="user-name">{adminInfo.firstname} {adminInfo.lastname}</h3>
+          <img className="user-image" src={adminInfo.photo} alt="" />
+
+          </div>
+
 
           <div className="option">
-            <Link to="/settings" className="color">
-              <i className="bx bxs-cog"></i> Configuracion
-            </Link>
-            <button className="ml-10">
-              <Link to="/setting"> Configuracion de usuario</Link>
+            
+              <Link className="btn-menu" to="/setting"> Mi perfil
+              
+        </Link>
+        <button className="btn-menu" onClick={signoutStoreHandler}>
+              Configurar negocio
             </button>
-            <button className="ml-10" onClick={signoutStoreHandler}>
+            
+            <button className="btn-menu" onClick={signoutStoreHandler}>
               Cambiar de negocio
             </button>
-            <button className="ml-10" onClick={signoutHandler}>
+            <button className="btn-menu" onClick={signoutHandler}>
               Cerrar Sesion
             </button>
           </div>

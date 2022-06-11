@@ -6,17 +6,16 @@ import { signin } from "../actions/adminActions";
 import ErrorBox from "../components/ErrorBox";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-import "../styles/login.css"
+import "../styles/login.css";
 
 export default function LoginScreen() {
-  
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {search} = useLocation();
-  const redirectInUrl = new URLSearchParams(search).get('redirect');
-  const redirect = redirectInUrl? redirectInUrl : "/";
+  const { search } = useLocation();
+  const redirectInUrl = new URLSearchParams(search).get("redirect");
+  const redirect = redirectInUrl ? redirectInUrl : "/";
 
   const adminSignin = useSelector((state) => state.adminSignin);
   const { loading, error, adminInfo } = adminSignin;
@@ -25,32 +24,36 @@ export default function LoginScreen() {
   const submitHandler = (e) => {
     e.preventDefault();
     if (email.length === 0 && password.length === 0) {
-      swal("The fields cannot be empty", {
+      swal("Los campos no pueden estar vacios", {
         icon: "error",
         dangerMode: true,
       });
     } else if (email.length === 0) {
-      swal("The username cannot be empty", {
+      swal("El usuario no puede estar vacio", {
         icon: "error",
         dangerMode: true,
       });
     } else if (password.length === 0) {
-      swal("The password cannot be empty", {
+      swal("La contraseña no puede estar vacia", {
         icon: "error",
         dangerMode: true,
       });
     } else {
-      
-        dispatch(signin(email.toLowerCase(), password));
-
+      dispatch(signin(email.toLowerCase(), password));
     }
   };
 
+  console.log(adminInfo);
+
   useEffect(() => {
-    if(adminInfo){
+    if (adminInfo) {
+      if (adminInfo.status === "inactive") {
+        console.log("entro");
+        navigate("/verification");
+      } 
       navigate(redirect)
     }
-  }, [navigate, redirect, adminInfo])
+  }, [navigate, redirect, adminInfo]);
 
   return (
     <div className="container-login">
@@ -82,9 +85,12 @@ export default function LoginScreen() {
             {error == "Password incorrect" && <ErrorBox error={error} />}
             <input type="submit" value="Entrar" />
           </form>
-          <a className="link-black" href="/reset-password">¿Has olvidado tu contraseña?</a>
-          <Link to="/register" className="register-btn">Ir a registrarme</Link>
-         
+          <a className="link-black" href="/reset-password">
+            ¿Has olvidado tu contraseña?
+          </a>
+          <Link to="/register" className="register-btn">
+            Ir a registrarme
+          </Link>
         </div>
       )}
     </div>

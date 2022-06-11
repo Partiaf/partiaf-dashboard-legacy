@@ -109,7 +109,7 @@ export default function RegisterScreen(props) {
         </div>
         <div className="form-register">
           <form className="register-form" onSubmit={submitHandler}>
-            <div className="register-date">
+            <div className="register-date-home">
               <div className="info-register">
                 <h5>Datos de registro</h5>
                 <input
@@ -151,7 +151,7 @@ export default function RegisterScreen(props) {
                 </div>
               </div>
             </div>
-            <h5>Tipo de documento</h5>
+            <h5 className="h5-date">Tipo de documento</h5>
             <div className="personal-data">
               <select
                 className="select-type-doc"

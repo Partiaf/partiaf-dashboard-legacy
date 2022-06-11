@@ -46,8 +46,8 @@ function App() {
               <Route path="/cover" component={CoverScreen} exact></Route>
               <Route path="/buy" component={BuyScreen} exact></Route>
               <Route path="/staff" component={StaffScreen} exact></Route>
-              <Route path="/setting" component={SettingScreen} exact></Route>
-              <Route path="/settings" component={SettingsScreen} exact></Route>
+              <Route path="/setting" element={<SettingScreen />} exact></Route>
+              <Route path="/settings" element={<SettingsScreen />} exact></Route>
               <Route
                 path="/settingstore"
                 component={SettingStoreScreen}

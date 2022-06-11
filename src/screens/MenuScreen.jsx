@@ -48,7 +48,7 @@ export default function MenuScreen() {
       menuActions.create({
         title: title,
         email: adminInfo.email,
-        storeId: storeInfo.store._id,
+        storeId: storeInfo._id,
       })
     );
   };
@@ -99,7 +99,7 @@ export default function MenuScreen() {
         image: itemImage,
         amount: amount,
         email: adminInfo.email,
-        storeId: storeInfo.store._id,
+        storeId: storeInfo._id,
         menuId: menuId,
       })
     );
@@ -165,7 +165,7 @@ export default function MenuScreen() {
         image: itemImageUpdate,
         amount: amountUpdate,
         email: adminInfo.email,
-        storeId: storeInfo.store._id,
+        storeId: storeInfo._id,
         menuId: menuId,
         _id: itemId._id,
       })
@@ -186,7 +186,7 @@ export default function MenuScreen() {
         title: titleUpdateMenu,
         menuId: menuId,
         email: adminInfo.email,
-        storeId: storeInfo.store._id,
+        storeId: storeInfo._id,
       })
     );
   };
@@ -206,7 +206,7 @@ export default function MenuScreen() {
           icon: "success",
         });
         dispatch(
-          menuActions.delete(menu._id, adminInfo.email, storeInfo.store._id)
+          menuActions.delete(menu._id, adminInfo.email, storeInfo._id)
         );
       }
     });
@@ -231,7 +231,7 @@ export default function MenuScreen() {
           itemsActions.delete(
             item._id,
             adminInfo.email,
-            storeInfo.store._id,
+            storeInfo._id,
             menu._id
           )
         );
@@ -259,7 +259,7 @@ export default function MenuScreen() {
     }
 
     if (storeInfo) {
-      dispatch(menuActions.list(adminInfo.email, storeInfo.store._id));
+      dispatch(menuActions.list(adminInfo.email, storeInfo._id));
     }
 
     if (successDelete) {

@@ -26,6 +26,7 @@ ul{
 
 a{
   text-decoration: none;
+  display: inline-block;
 }
 
 input[type="text"]{
@@ -164,4 +165,21 @@ input[type="number"]{
 
 .form-control{
   width: 100%;
+}
+
+.register-date-home{
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.register-date-home .photo{
+  width: 100%;
+}
+
+.register-date-home .photo .container-photo{
+  align-items: center;
+}
+
+.register-date-home .h5-date{
+  margin-top: 2rem;
 }

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteStore, updateStore } from "../actions/adminActions";
-import React, { Component }  from 'react';
+import React, { Component } from "react";
 
 export default function SettingsScreen(props) {
   const [password, setPassword] = useState("");
@@ -22,7 +22,7 @@ export default function SettingsScreen(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(deleteStore(adminInfo.email, storeInfo.store._id, password));
+    dispatch(deleteStore(adminInfo.email, storeInfo._id, password));
   };
 
   console.log(storeInfoUpdate);
@@ -30,16 +30,16 @@ export default function SettingsScreen(props) {
   const storeCreate = useSelector((state) => state.storeCreate);
   const { loading, error, success: successCreate } = storeCreate;
 
-  const [name, setName] = useState(storeInfo.store.name);
-  const [type, setType] = useState(storeInfo.store.type);
-  const [nit, setNit] = useState(storeInfo.store.nit);
-  const [mobile, setMobile] = useState(storeInfo.store.mobile);
-  const [images, setImages] = useState([...storeInfo.store.images]);
-  const [employes, setEmployes] = useState(storeInfo.store.employes);
-  const [address, setAddress] = useState(storeInfo.store.address);
-  const [emailStore, setEmailStore] = useState(storeInfo.store.email);
+  const [name, setName] = useState(storeInfo.name);
+  const [type, setType] = useState(storeInfo.type);
+  const [nit, setNit] = useState(storeInfo.nit);
+  const [mobile, setMobile] = useState(storeInfo.phone);
+  const [images, setImages] = useState([...storeInfo.photos]);
+  const [employes, setEmployes] = useState(storeInfo.employes);
+  const [address, setAddress] = useState(storeInfo.address);
+  const [emailStore, setEmailStore] = useState(storeInfo.email);
   const [email] = useState(adminInfo.email);
-  const [totalLimit, setTotalLimit] = useState(storeInfo.store.totalLimit);
+  const [limit, setLimit] = useState(storeInfo.limit);
 
   console.log(images);
   const removeImage = (e, image) => {
@@ -54,7 +54,7 @@ export default function SettingsScreen(props) {
     console.log("CLICK");
     dispatch(
       updateStore({
-        id: storeInfo.store._id,
+        id: storeInfo._id,
         name,
         type,
         nit,
@@ -64,8 +64,8 @@ export default function SettingsScreen(props) {
         address,
         emailStore,
         email,
-        totalLimit,
-        password: storeInfo.store.password,
+        limit,
+        password: storeInfo.password,
       })
     );
   };
@@ -98,51 +98,48 @@ export default function SettingsScreen(props) {
   const [noNit, setNoNit] = useState(true);
 
   return (
-    <div>
+    <>
       <div className="settings">
-        <div className="register center">
+        <div className="register">
           <h2 className="register-title new-title">Bienvenido!</h2>
           <form onSubmit={submitHandler}>
             <p>Datos del establecimeinto</p>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Nombre"
-              required
-            />
-            <label htmlFor="" className="form-label">
-              Tipo de Establecimeinto
-            </label>
-            <select
-              name=""
-              id=""
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-              required
-            >
-              <option value="Discoteca">Discoteca</option>
-              <option value="Bar">Bar</option>
-              <option value="Gastrobar">Gastrobar</option>
-            </select>
-            <input
-              type="number"
-              value={nit}
-              onChange={(e) => setNit(e.target.value)}
-              name=""
-              id=""
-              placeholder="NIT"
-            />
-            <input
-              type="text"
-              value={totalLimit}
-              onChange={(e) => setTotalLimit(e.target.value)}
-              name=""
-              id=""
-              placeholder="Cupo total"
-              required
-            />
-            <div>
+            <div className="register-grid">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Nombre"
+                required
+              />
+              <select
+                name=""
+                id=""
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+                required
+              >
+                <option value="Discoteca">Discoteca</option>
+                <option value="Bar">Bar</option>
+                <option value="Gastrobar">Gastrobar</option>
+              </select>
+              <input
+                type="number"
+                value={nit}
+                onChange={(e) => setNit(e.target.value)}
+                name=""
+                id=""
+                placeholder="NIT"
+              />
+              <input
+                type="text"
+                value={limit}
+                onChange={(e) => setLimit(e.target.value)}
+                name=""
+                id=""
+                placeholder="Cupo total"
+                required
+              />
               <input
                 type="email"
                 value={emailStore}
@@ -159,8 +156,6 @@ export default function SettingsScreen(props) {
                 placeholder="Movil"
                 required
               />
-            </div>
-            <div>
               <input
                 type="number"
                 value={employes}
@@ -178,21 +173,23 @@ export default function SettingsScreen(props) {
                 required
               />
             </div>
-
-            {/* <p>Ingrese contrseña y confirme</p>
+            {/* 
+             <p>Ingrese contrseña y confirme</p>
                 <div>
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Contraseña" required />
                     <input type="password" placeholder="Confirmar contraseña" />
-                </div> */}
-
+                </div>  */}
+            {/* 
             <input
               type="file"
               name=""
-              className="file-input"
+              className=""
               id=""
               onChange={(e) => uploadHandler(e, "featuredImage")}
-            />
-            <div className="store-images">
+            /> */}
+
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            {/* <div className="store-images">
               {images.map((image) => (
                 <div className="image">
                   <img src={image} alt="" />
@@ -204,20 +201,15 @@ export default function SettingsScreen(props) {
                   </button>
                 </div>
               ))}
-            </div>
-
-            <div className="footer">
-              <Link to="/">
-                <button className="btn-normal">Atras</button>
-              </Link>
-              <button onClick={(e) => updateSubmit(e)}>Editar</button>
-            </div>
+            </div> */}
           </form>
         </div>
-        <button className="btn-danger" onClick={() => setOpenModal(true)}>
-          Eliminar Negocio
-        </button>
+        <div className="footer-setting">
+          <button className="btn-danger" onClick={() => setOpenModal(true)}>Eliminar Negocio</button>
+          <button onClick={(e) => updateSubmit(e)}>Guardar</button>
+        </div>
       </div>
+
       <div className={openModal ? "modalStore active" : "modalStore"}>
         <div>
           <input
@@ -233,6 +225,6 @@ export default function SettingsScreen(props) {
           {/* </form> */}
         </div>
       </div>
-    </div>
+    </>
   );
 }

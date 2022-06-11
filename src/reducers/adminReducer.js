@@ -186,7 +186,7 @@ export const adminActiveEmailReducer = (state = {}, action) => {
     case "ADMIN_ACTIVE_EMAIL_REQUEST":
       return { loading: true };
     case "ADMIN_ACTIVE_EMAIL_SUCCESS":
-      return { loading: false, success: true };
+      return { loading: false, adminInfo: action.payload, success: true };
     case "ADMIN_ACTIVE_EMAIL_FAIL":
       return { loading: false, error: action.payload };
     default:

@@ -16,16 +16,16 @@ export default function SettingStoreScreen(props) {
   const storeCreate = useSelector((state) => state.storeCreate);
   const { loading, error, success: successCreate } = storeCreate;
 
-  const [name, setName] = useState(storeInfo.store.name);
-  const [type, setType] = useState(storeInfo.store.type);
-  const [nit, setNit] = useState(storeInfo.store.nit);
-  const [mobile, setMobile] = useState(storeInfo.store.mobile);
-  const [employes, setEmployes] = useState(storeInfo.store.employes);
-  const [address, setAddress] = useState(storeInfo.store.address);
-  const [emailStore, setEmailStore] = useState(storeInfo.store.email);
-  const [password, setPassword] = useState(storeInfo.store.password);
+  const [name, setName] = useState(storeInfo.name);
+  const [type, setType] = useState(storeInfo.type);
+  const [nit, setNit] = useState(storeInfo.nit);
+  const [mobile, setMobile] = useState(storeInfo.mobile);
+  const [employes, setEmployes] = useState(storeInfo.employes);
+  const [address, setAddress] = useState(storeInfo.address);
+  const [emailStore, setEmailStore] = useState(storeInfo.email);
+  const [password, setPassword] = useState(storeInfo.password);
   const [email] = useState(adminInfo.email);
-  const [totalLimit, setTotalLimit] = useState(storeInfo.store.totalLimit);
+  const [totalLimit, setTotalLimit] = useState(storeInfo.totalLimit);
 
   const dispatch = useDispatch();
 

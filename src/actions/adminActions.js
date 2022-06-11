@@ -199,6 +199,8 @@ export const activeEmail = (code) => async (dispatch)  => {
   try {
     const { data } = await Axios.post(`${URL}/activate-email`, { code });
     dispatch({ type: "ADMIN_ACTIVE_EMAIL_SUCCESS", payload: data });
+    console.log("NEW DATA", data)
+    localStorage.setItem("adminInfo", JSON.stringify(data));
     
   } catch (error) {
     dispatch({
@@ -296,15 +298,14 @@ export const listCovers = (email, storeId) => async (dispatch, getState) => {
   }
 };
 
-export const signinStore = (email, storeId, password) => async (dispatch) => {
+export const signinStore = (id, password) => async (dispatch) => {
   dispatch({
     type: STORE_SIGNIN_REQUEST,
-    payload: { email, storeId, password },
+    payload: { id, password },
   });
   try {
-    const { data } = await Axios.post(`${URL}/stores/select`, {
-      email,
-      storeId,
+    const { data } = await Axios.post(`${URL}/signin-store`, {
+      id,
       password,
     });
 

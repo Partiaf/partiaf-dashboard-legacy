@@ -39,7 +39,7 @@ export default function BookingListScreen({ loading, bookings }) {
           icon: "success",
         });
         dispatch(
-          deleteBooking(adminInfo.email, storeInfo.store._id, cover._id)
+          deleteBooking(adminInfo.email, storeInfo._id, cover._id)
         );
       }
     });

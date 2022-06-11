@@ -27,7 +27,7 @@ export default function BookingCreateScreen() {
     dispatch(
       createBooking(
         adminInfo.email,
-        storeInfo.store._id,
+        storeInfo._id,
         info,
         cupo,
         date,

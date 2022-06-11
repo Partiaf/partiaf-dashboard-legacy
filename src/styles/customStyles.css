@@ -100,18 +100,20 @@
 }
 
 .settings {
-  margin-top: 2rem;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: calc(100% - 15rem);
+  position: relative;
+  left: 18rem;
+  /* align-items: center; */
+  /* justify-content: center; */
+  width: calc(100% - 18rem);
+
+
 }
 
+.settings input{
+  background-color: transparent !important;
+}
 .settings .btn-danger {
   background-color: #ff0f0f;
-  margin-top: 5rem;
   color: #fff;
   width: 300px;
 }
@@ -229,4 +231,50 @@
 
 .store-images img {
   max-width: 60px;
+}
+
+.settings .register p{
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.register-grid{
+ display: grid;
+ grid-template-columns: 1fr 1fr; 
+
+}
+
+.register-grid select{
+  height: 4rem;
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.register form{
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100%;
+}
+
+.settings .register{
+  width: 100%;
+}
+
+.footer-setting{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:  4rem auto;
+}
+
+.footer-setting button{
+  background-color: var(--black);
+  color: #fff;
+  width: 200px;
+}
+
+.footer-setting .btn-danger{
+  background-color: #ff0f0f;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { listStores, signinStore, signout } from "../actions/adminActions";
 import storeActions from "../actions/storeActions";
 import LoadingBox from "../components/LoadingBox";
@@ -18,9 +18,11 @@ export default function BusinessScreen(props) {
   const storeList = useSelector((state) => state.storeList);
   const { loading, data: stores } = storeList;
 
-  console.log(stores)
   const storeSignin = useSelector((state) => state.storeSignin);
   const { storeInfo, error: errorSignin } = storeSignin;
+
+  const adminActiveEmail = useSelector((state) => state.adminActiveEmail);
+  const { adminInfo: activeAdminInfo } = adminActiveEmail;
 
   const dispatch = useDispatch();
 
@@ -40,16 +42,28 @@ export default function BusinessScreen(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("entro");
-    dispatch(signinStore(adminInfo.email, barSelected._id, password));
+    dispatch(signinStore(barSelected._id, password));
     if (storeInfo) {
       props.history.push("/home");
     }
   };
 
-  if (!loading) {
-    console.log(stores);
-  }
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (adminActiveEmail) {
+      if (adminActiveEmail.status === "active") {
+        navigate("/");
+      }
+    }
+
+    if (adminInfo && !activeAdminInfo) {
+      if (adminInfo.status === "inactive") {
+        navigate("/verification");
+      }
+    }
+  }, [navigate, activeAdminInfo, adminInfo]);
+
   return (
     <>
       <div className="container-welcome">
@@ -101,26 +115,24 @@ export default function BusinessScreen(props) {
         </div>
       </div>
 
-      <div className={openModal ? "modalStore active" : "modalStore"}>
+      <div className={openModal ? "modal-store active" : "modal-store"}>
         <div>
-          {barSelected ? (
-            <span>{errorSignin ? errorSignin : barSelected.name}</span>
-          ) : (
-            <h2>NO BAR</h2>
-          )}
-
-          {/* <form onSubmit={submitHandler} className="form-store"> */}
-
+          <header>
+            <button href="/" className="back-btn" onClick={() => setOpenModal(false)}>
+              <img src="./assets/left-back.svg" alt="back" />
+              Atras
+            </button>
+            <h2>{barSelected.name}</h2>
+          </header>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Ingrese la contrasena del negocio"
           />
-          <button onClick={submitHandler}>Continuar</button>
-          <button className="btn-none" onClick={() => setOpenModal(false)}>
-            Atras
-          </button>
+          {errorSignin && <p>{errorSignin}</p>}
+          <button className="login-store" onClick={submitHandler}>Entrar</button>
+          <button className="reset-password-link">Has olvidado tu contrasena?</button>
           {/* </form> */}
         </div>
       </div>

@@ -62,7 +62,7 @@ export default function CoverScreen(props) {
     }
 
     if (storeInfo) {
-      dispatch(listCovers(adminInfo.email, storeInfo.store._id));
+      dispatch(listCovers(adminInfo.email, storeInfo._id));
     }
   }, [
     dispatch,
@@ -79,7 +79,7 @@ export default function CoverScreen(props) {
         <div className="flex flexm border">
           <div className="box">
             <h3>Total Entradas</h3>
-            {loadingList ? <LoadingBox /> : <p>{storeInfo.store.totalLimit}</p>}
+            {loadingList ? <LoadingBox /> : <p>{storeInfo.totalLimit}</p>}
           </div>
           <div className="box">
             <h3>Entradas Efectivas</h3>
