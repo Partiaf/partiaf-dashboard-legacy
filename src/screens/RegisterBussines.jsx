@@ -28,7 +28,7 @@ export default function RegisterBussines(props) {
   const [address, setAddress] = useState("");
   const [emailStore, setEmailStore] = useState("");
   const [password, setPassword] = useState("");
-  const [email] = useState(adminInfo.email);
+  const [email] = useState("");
   const [totalLimit, setTotalLimit] = useState("");
   const [images, setImages] = useState([]);
   const [lat, setLat] = useState();
@@ -188,8 +188,8 @@ export default function RegisterBussines(props) {
                 <input
                   type="email"
                   placeholder="Email"
-                  value={emailStore}
-                  onChange={(e) => setEmailStore(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
                 <input
