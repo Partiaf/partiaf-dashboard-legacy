@@ -43,7 +43,7 @@ const reducer = combineReducers({
   
   userSignin: userSigninReducer,
   adminSignin: adminSigninReducer,
-  storeCreate: createStoreReducer,
+  // storeCreate: createStoreReducer,
   storeUpdate: updateStoreReducer,
   // storeList: storeListReducer,
   storeSignin: storeSigninReducer,
@@ -79,6 +79,7 @@ const reducer = combineReducers({
 
     //<------- STORES ---------->
     storeList: storeReducer.listReducer,
+    storeCreate: storeReducer.createReducer,
     // chairCreate: chairReducer.createReducer,
     // chairUpdate: chairReducer.updateReducer,
     // chairDelete: chairReducer.deleteReducer,

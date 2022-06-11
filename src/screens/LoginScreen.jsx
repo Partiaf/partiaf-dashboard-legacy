@@ -84,7 +84,7 @@ export default function LoginScreen() {
             {error == "Password incorrect" && <ErrorBox error={error} />}
             <input type="submit" value="Entrar" />
           </form>
-          <a>¿Has olvidado tu contraseña?</a>
+          <a className="link-black" href="/reset-password">¿Has olvidado tu contraseña?</a>
           <Link to="/register" className="register-btn">Ir a registrarme</Link>
          
         </div>

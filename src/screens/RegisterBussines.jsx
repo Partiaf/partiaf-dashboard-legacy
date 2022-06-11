@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { createStore } from "../actions/adminActions";
+import storeActions from "../actions/storeActions";
 import CardLocation from "../components/CardLocation";
+import LoadingBox from "../components/LoadingBox";
 import "../styles/RegisterBussines.css";
 
 export default function RegisterBussines(props) {
@@ -65,50 +67,57 @@ export default function RegisterBussines(props) {
   };
 
   const submitHandler = (e) => {
+    e.preventDefault();
+    const newLat = addressMap ? addressMap.lat : "";
+    const newLng = addressMap ? addressMap.lng : "";
 
-    const newLat = addressMap ? addressMap.lat : ""
-    const newLng = addressMap ? addressMap.lng : ""
-    
-    if(addressMap){
+    if (addressMap) {
       setLat(addressMap.lat);
       setLng(addressMap.lng);
     }
 
     let moveOn = true;
 
-    if(!newLat || !newLng){
-      moveOn = window.confirm('No has configurado una direccion en el mapa, deseas continuar?')
+    if (!newLat || !newLng) {
+      // moveOn = window.confirm(
+      //   "No has configurado una direccion en el mapa, deseas continuar?"
+      // );
     }
     dispatch(
-      createStore({
+      storeActions.create({
         name,
         type,
         nit,
-        mobile,
+        phone,
         employes,
-        emailStore,
         password,
         email,
-        totalLimit,
+        limit: totalLimit,
         images,
-        location: [{geo: {type: 'point', longitud: lng, latitude: lat}}]
+        location: [{ geo: [{ caract: "point", longitud: lng, latitude: lat }] }],
+        admin: adminInfo._id
       })
     );
   };
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (successCreate) {
-      props.history.push("/home");
+      navigate("/home");
     }
   }, [successCreate]);
 
   const [noNit, setNoNit] = useState(true);
 
-  const navigate = useNavigate();
 
   const chooseOnMap = () => {
-    navigate('/maps')
-  }
+    navigate("/maps");
+  };
+
+  console.log(loading)
+
+  const [imageStore, setImageStore] = useState(false);
 
   return (
     <div className="container-register">
@@ -121,10 +130,13 @@ export default function RegisterBussines(props) {
           Atras
         </a>
         <div className="form-register">
-          <form className="register-form" onSubmit>
+          <form className="register-form">
             <div className="register-date">
               <div className="info-register">
                 <h5>Datos del establecimiento</h5>
+              </div>
+
+              <div className="input-container">
                 <input
                   type="text"
                   placeholder="Nombre"
@@ -145,71 +157,49 @@ export default function RegisterBussines(props) {
                   <option value="Bar">Bar</option>
                   <option value="Gastrobar">Gastrobar</option>
                 </select>
+                <input
+                  type="number"
+                  placeholder="NIT (opcional)"
+                  value={nit}
+                  onChange={(e) => setNit(e.target.value)}
+                />
+
+                <input
+                  type="number"
+                  placeholder="N° Empleados"
+                  value={employes}
+                  onChange={(e) => setEmployes(e.target.value)}
+                  required
+                />
+                <input
+                  type="number"
+                  placeholder="Cupo total"
+                  value={totalLimit}
+                  onChange={(e) => setTotalLimit(e.target.value)}
+                  required
+                />
+                <input
+                  type="text"
+                  placeholder="Direccion"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={emailStore}
+                  onChange={(e) => setEmailStore(e.target.value)}
+                  required
+                />
+                <input
+                  type="number"
+                  placeholder="movil"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
               </div>
-              <div className="photo">
-                <h5>Foto de perfil</h5>
-                <div className="container-photo">
-                  <button className="contenedor-btn-file">
-                    
-                  {loading ? (
-                      <LoadingBox />
-                    ) : (
-                      <img 
-                        className={images.length >0 ? "" : "image-preview"}
-                        src={images.length >0 ? images[0] : "./assets/add-photo.svg"}
-                        alt="profile-picture"
-                      />
-                    )}
-                    <input
-                      type="file"
-                      id="btn-file"
-                      onChange={(e) => uploadHandler(e, "featuredImage")}
-                      required
-                    />
-                  </button>
-                </div>
-              </div>
-              <input
-                type="number"
-                placeholder="NIT (opcional)"
-                value={nit}
-                onChange={(e) => setNit(e.target.value)}
-              />
-              <input
-                type="number"
-                placeholder="N° Empleados"
-                value={employes}
-                onChange={(e) => setEmployes(e.target.value)}
-                required
-              />
-              <input
-                type="number"
-                placeholder="Cupo total"
-                value={totalLimit}
-                onChange={(e) => setTotalLimit(e.target.value)}
-                required
-              />
-              <input
-                type="text"
-                placeholder="Direccion"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={emailStore}
-                onChange={(e) => setEmailStore(e.target.value)}
-                required
-              />
-              <input
-                type="number"
-                placeholder="movil"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                required
-              />
             </div>
 
             <h5>Ingrese una contraseña</h5>
@@ -221,15 +211,19 @@ export default function RegisterBussines(props) {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <input type="password" placeholder="Confirmar contraseña" required />
+              <input
+                type="password"
+                placeholder="Confirmar contraseña"
+                required
+              />
             </div>
 
             <div className="container-btn">
               <input
-                type="submit"
+                type="button"
                 value="Siguiente"
                 className="black-button-bss"
-                onClick={() => submitHandler()}
+                onClick={() => setImageStore(true)}
               />
             </div>
             <span>
@@ -239,6 +233,278 @@ export default function RegisterBussines(props) {
           </form>
         </div>
       </div>
+
+      {imageStore && (
+        <div className="image-store-container">
+          <div className="register-card">
+            <div className="logo-partiaf">
+              <img src="./assets/logo-partiaf.svg" alt="logo" />
+            </div>
+            <button onClick={() => setImageStore(false)} className="back-btn">
+              <img src="./assets/left-back.svg" alt="back" />
+              Atras
+            </button>
+            <div className="form-register">
+              <form className="register-form" onSubmit={submitHandler}>
+                <div className="register-date">
+                  <div className="info-register">
+                    <h5>Carga fotos del establecimiento</h5>
+                  </div>
+
+                  <div className="inputs-store">
+                  <div className="input-container-image">
+                    <div className="photo">
+                      <div className="container-photo box-photo">
+                        <div className="contenedor-btn-file">
+                          {loading ? (
+                            <LoadingBox />
+                          ) : (
+                            <img
+                              className={images[0] ? "" : "image-preview"}
+                              src={
+                                images[0] ? images[0] : "./assets/add-photo.svg"
+                              }
+                              alt="profile-picture"
+                            />
+                          )}
+
+                          <input
+                            type="file"
+                            name="file"
+                            id="btn-file"
+                            onChange={(e) => uploadHandler(e, "featuredphoto")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="multi-images-store">
+                  <div className="photo">
+                      <div className="container-photo box-photo-mini">
+                        <div className="contenedor-btn-file">
+                          {loading ? (
+                            <LoadingBox />
+                          ) : (
+                            <img
+                              className={images[1] ? "" : "image-preview"}
+                              src={
+                                images[1] ? images[1] : "./assets/add-photo.svg"
+                              }
+                              alt="profile-picture"
+                            />
+                          )}
+
+                          <input
+                            type="file"
+                            name="file"
+                            id="btn-file"
+                            onChange={(e) => uploadHandler(e, "featuredphoto")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="photo">
+                      <div className="container-photo box-photo-mini">
+                        <div className="contenedor-btn-file">
+                          {loading ? (
+                            <LoadingBox />
+                          ) : (
+                            <img
+                              className={images[2] ? "" : "image-preview"}
+                              src={
+                                images[2] ? images[2] : "./assets/add-photo.svg"
+                              }
+                              alt="profile-picture"
+                            />
+                          )}
+
+                          <input
+                            type="file"
+                            name="file"
+                            id="btn-file"
+                            onChange={(e) => uploadHandler(e, "featuredphoto")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="photo">
+                      <div className="container-photo box-photo-mini">
+                        <div className="contenedor-btn-file">
+                          {loading ? (
+                            <LoadingBox />
+                          ) : (
+                            <img
+                              className={images[3] ? "" : "image-preview"}
+                              src={
+                                images[3] ? images[3] : "./assets/add-photo.svg"
+                              }
+                              alt="profile-picture"
+                            />
+                          )}
+
+                          <input
+                            type="file"
+                            name="file"
+                            id="btn-file"
+                            onChange={(e) => uploadHandler(e, "featuredphoto")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="photo">
+                      <div className="container-photo box-photo-mini">
+                        <div className="contenedor-btn-file">
+                          {loading ? (
+                            <LoadingBox />
+                          ) : (
+                            <img
+                              className={images[4] ? "" : "image-preview"}
+                              src={
+                                images[4] ? images[4] : "./assets/add-photo.svg"
+                              }
+                              alt="profile-picture"
+                            />
+                          )}
+
+                          <input
+                            type="file"
+                            name="file"
+                            id="btn-file"
+                            onChange={(e) => uploadHandler(e, "featuredphoto")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="photo">
+                      <div className="container-photo box-photo-mini">
+                        <div className="contenedor-btn-file">
+                          {loading ? (
+                            <LoadingBox />
+                          ) : (
+                            <img
+                              className={images[5] ? "" : "image-preview"}
+                              src={
+                                images[5] ? images[5] : "./assets/add-photo.svg"
+                              }
+                              alt="profile-picture"
+                            />
+                          )}
+
+                          <input
+                            type="file"
+                            name="file"
+                            id="btn-file"
+                            onChange={(e) => uploadHandler(e, "featuredphoto")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="photo">
+                      <div className="container-photo box-photo-mini">
+                        <div className="contenedor-btn-file">
+                          {loading ? (
+                            <LoadingBox />
+                          ) : (
+                            <img
+                              className={images[6] ? "" : "image-preview"}
+                              src={
+                                images[6] ? images[6] : "./assets/add-photo.svg"
+                              }
+                              alt="profile-picture"
+                            />
+                          )}
+
+                          <input
+                            type="file"
+                            name="file"
+                            id="btn-file"
+                            onChange={(e) => uploadHandler(e, "featuredphoto")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="photo">
+                      <div className="container-photo box-photo-mini">
+                        <div className="contenedor-btn-file">
+                          {loading ? (
+                            <LoadingBox />
+                          ) : (
+                            <img
+                              className={images[7] ? "" : "image-preview"}
+                              src={
+                                images[7] ? images[7] : "./assets/add-photo.svg"
+                              }
+                              alt="profile-picture"
+                            />
+                          )}
+
+                          <input
+                            type="file"
+                            name="file"
+                            id="btn-file"
+                            onChange={(e) => uploadHandler(e, "featuredphoto")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="photo">
+                      <div className="container-photo box-photo-mini">
+                        <div className="contenedor-btn-file">
+                          {loading ? (
+                            <LoadingBox />
+                          ) : (
+                            <img
+                              className={images[8] ? "" : "image-preview"}
+                              src={
+                                images[8] ? images[8] : "./assets/add-photo.svg"
+                              }
+                              alt="profile-picture"
+                            />
+                          )}
+
+                          <input
+                            type="file"
+                            name="file"
+                            id="btn-file"
+                            onChange={(e) => uploadHandler(e, "featuredphoto")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                    
+                  </div>
+               
+                </div>
+
+                <h5>Establece una breve description</h5>
+                <div className="personal-data">
+                  <textarea
+                    name=""
+                    id=""
+                    rows="10"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  ></textarea>
+                </div>
+
+                <div className="container-btn">
+                  <input
+                    type="submit"
+                    value="Siguiente"
+                    className="black-button-bss"
+                  />
+                </div>
+                <span>
+                  Al registrarse usted acepta los términos y condiciones del
+                  servicio de PARTIAF
+                </span>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

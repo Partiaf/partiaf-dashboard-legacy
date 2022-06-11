@@ -22,6 +22,7 @@ import "./styles/variables.css"
 import RegisterBussines from "./screens/RegisterBussines";
 import VerificationScreen from "./screens/VerificationScreen";
 import MapScreen from "./screens/MapScreen";
+import ResetPasswordScreen from "./screens/ResetPasswordScreen";
 
 function App() {
   const adminSignin = useSelector((state) => state.adminSignin);
@@ -65,6 +66,7 @@ function App() {
         ) : (
           <Routes>
             <Route path="/" element={<LoginScreen/>} exact></Route>
+            <Route path="/reset-password" element={<ResetPasswordScreen/>} exact></Route>
             <Route path="/register" element={<RegisterScreen/>} exact></Route>
             <Route path="/settings" element={<SettingsScreen />} exact></Route>
             
