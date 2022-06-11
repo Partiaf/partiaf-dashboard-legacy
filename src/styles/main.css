@@ -63,3 +63,32 @@ input[type="number"]{
 .lex-input{
   width: 300px !important;
 }
+
+.full-container{
+  height: 100vh !important;
+}
+
+.map-input-box{
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0.5rem auto;
+  width: 25rem;
+  height: 4rem;
+  display: flex;
+}
+
+.map-input-box input{
+  border: none;
+  padding: 1rem;
+  border-radius: .5rem 0 0 .5rem ;
+
+}
+
+.map-input-box button{
+  background-color: var(--black);
+  border-radius: 0;
+  color: var(--gray);
+  border-radius: 0 .5rem .5rem 0rem;
+}

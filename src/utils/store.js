@@ -24,6 +24,7 @@ import chairReducer from "../reducers/chairReducer.js";
 import itemsReducer from "../reducers/itemsReducer.js";
 import { generalReducer } from "../reducers/globalReducer.js";
 import buyReducer from "../reducers/buyReducers.js";
+import storeReducer, { storeAddressMapReducer } from "../reducers/storeReducers.js";
 const initialState = {
   adminSignin: {
     adminInfo: localStorage.getItem("adminInfo")
@@ -44,7 +45,7 @@ const reducer = combineReducers({
   adminSignin: adminSigninReducer,
   storeCreate: createStoreReducer,
   storeUpdate: updateStoreReducer,
-  storeList: storeListReducer,
+  // storeList: storeListReducer,
   storeSignin: storeSigninReducer,
   createCover: createStoreCoverReducer,
   coversList: coverListReducer,
@@ -76,7 +77,15 @@ const reducer = combineReducers({
   chairUpdate: chairReducer.updateReducer,
   chairDelete: chairReducer.deleteReducer,
 
+    //<------- STORES ---------->
+    storeList: storeReducer.listReducer,
+    // chairCreate: chairReducer.createReducer,
+    // chairUpdate: chairReducer.updateReducer,
+    // chairDelete: chairReducer.deleteReducer,
+
   adminActiveEmail : adminActiveEmailReducer,
+
+  storeAddressMap: storeAddressMapReducer,
 
   uploadImage: generalReducer,
 });

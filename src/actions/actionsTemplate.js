@@ -22,16 +22,17 @@ export default class actionsTemplate {
     this.DELETE_RESET = constants.DELETE_RESET;
 
     this.api = api;
-    this.URL = "https://partiaf-api-v2.herokuapp.com/api/v1";
+    // this.URL = "https://partiaf-api-v2.herokuapp.com/api/v1";
+    this.URL = "http://localhost:5000/api/v2";
     
     // this.URL = "http://localhost:4300/api/v1";
   }
 
-  list = (email, storeId) => async (dispatch) => {
+  list = (id) => async (dispatch) => {
     dispatch({ type: this.LIST_REQUEST });
     try {
       const { data } = await Axios.get(
-        `${this.URL}/${this.api}?email=${email}&storeId=${storeId}`
+        `${this.URL}/${this.api}/${id}`
       );
 
       dispatch({ type: this.LIST_SUCCESS, payload: data });
@@ -45,7 +46,7 @@ export default class actionsTemplate {
     dispatch({ type: this.CREATE_REQUEST, payload: props });
     try {
       const { data } = await Axios.post(
-        `${this.URL}/${this.api}/create`,
+        `${this.URL}/${this.api}`,
         props
       );
       dispatch({ type: this.CREATE_SUCCESS, payload: data });

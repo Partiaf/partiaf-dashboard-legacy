@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createStore } from "../actions/adminActions";
 import CardLocation from "../components/CardLocation";
 import "../styles/RegisterBussines.css";
@@ -14,10 +14,14 @@ export default function RegisterBussines(props) {
   const storeCreate = useSelector((state) => state.storeCreate);
   const { loading, error, success: successCreate } = storeCreate;
 
+  const storeAddressMap = useSelector((state) => state.storeAddressMap);
+  const { address: addressMap } = storeAddressMap;
+
   const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [type, setType] = useState("");
   const [nit, setNit] = useState("");
-  const [mobile, setMobile] = useState("");
+  const [phone, setPhone] = useState("");
   const [employes, setEmployes] = useState("");
   const [address, setAddress] = useState("");
   const [emailStore, setEmailStore] = useState("");
@@ -25,6 +29,8 @@ export default function RegisterBussines(props) {
   const [email] = useState(adminInfo.email);
   const [totalLimit, setTotalLimit] = useState("");
   const [images, setImages] = useState([]);
+  const [lat, setLat] = useState();
+  const [lng, setLng] = useState();
 
   const dispatch = useDispatch();
 
@@ -59,7 +65,20 @@ export default function RegisterBussines(props) {
   };
 
   const submitHandler = (e) => {
-   
+
+    const newLat = addressMap ? addressMap.lat : ""
+    const newLng = addressMap ? addressMap.lng : ""
+    
+    if(addressMap){
+      setLat(addressMap.lat);
+      setLng(addressMap.lng);
+    }
+
+    let moveOn = true;
+
+    if(!newLat || !newLng){
+      moveOn = window.confirm('No has configurado una direccion en el mapa, deseas continuar?')
+    }
     dispatch(
       createStore({
         name,
@@ -67,12 +86,12 @@ export default function RegisterBussines(props) {
         nit,
         mobile,
         employes,
-        address,
         emailStore,
         password,
         email,
         totalLimit,
         images,
+        location: [{geo: {type: 'point', longitud: lng, latitude: lat}}]
       })
     );
   };
@@ -85,7 +104,11 @@ export default function RegisterBussines(props) {
 
   const [noNit, setNoNit] = useState(true);
 
-  console.log(images);
+  const navigate = useNavigate();
+
+  const chooseOnMap = () => {
+    navigate('/maps')
+  }
 
   return (
     <div className="container-register">
@@ -183,8 +206,8 @@ export default function RegisterBussines(props) {
               <input
                 type="number"
                 placeholder="movil"
-                value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
                 required
               />
             </div>

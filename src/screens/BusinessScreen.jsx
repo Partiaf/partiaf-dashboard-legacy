@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { listStores, signinStore, signout } from "../actions/adminActions";
+import storeActions from "../actions/storeActions";
 import LoadingBox from "../components/LoadingBox";
 import "../styles/bussines.css";
 
@@ -15,8 +16,9 @@ export default function BusinessScreen(props) {
   const [barSelected, setBarSelected] = useState([]);
 
   const storeList = useSelector((state) => state.storeList);
-  const { loading, stores } = storeList;
+  const { loading, data: stores } = storeList;
 
+  console.log(stores)
   const storeSignin = useSelector((state) => state.storeSignin);
   const { storeInfo, error: errorSignin } = storeSignin;
 
@@ -26,7 +28,7 @@ export default function BusinessScreen(props) {
     dispatch(signout());
   };
   useEffect(() => {
-    dispatch(listStores(adminInfo.email));
+    dispatch(storeActions.list(adminInfo._id));
   }, [dispatch, adminInfo]);
 
   const selectBar = (store) => {

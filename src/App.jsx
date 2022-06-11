@@ -21,6 +21,7 @@ import SettingStoreScreen from "./screens/SettingStoreScreen";
 import "./styles/variables.css"
 import RegisterBussines from "./screens/RegisterBussines";
 import VerificationScreen from "./screens/VerificationScreen";
+import MapScreen from "./screens/MapScreen";
 
 function App() {
   const adminSignin = useSelector((state) => state.adminSignin);
@@ -57,6 +58,7 @@ function App() {
             <Routes>
               <Route path="/" element={<BusinessScreen/>} exact></Route>
               <Route path="/store" element={<RegisterBussines/>} exact></Route>
+              <Route path="/maps" element={<MapScreen/>} exact></Route>
               <Route path="/verification" element={<VerificationScreen/>} exact></Route>
             </Routes>
           </LayoutHome>
