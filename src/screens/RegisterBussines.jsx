@@ -28,7 +28,7 @@ export default function RegisterBussines(props) {
   const [address, setAddress] = useState("");
   const [emailStore, setEmailStore] = useState("");
   const [password, setPassword] = useState("");
-  const [email] = useState("");
+  const [email, setEmail] = useState("");
   const [totalLimit, setTotalLimit] = useState("");
   const [images, setImages] = useState([]);
   const [lat, setLat] = useState();
