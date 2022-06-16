@@ -74,29 +74,43 @@ export default function CoverListScreen({ loading, covers, state }) {
           ) : (
             <>
               {covers.map((cover) => (
-                <div className="cover__card">
+                <div className="cover__card" key={cover._id} >
+                  <img src="/coverimg.jpg" alt="" />
+                  <div className="cover-content">
+
                   <div className="card-header">
-                    <p>
-                      {" "}
-                      Estado del cover :{" "}
-                      {state == true ? "Activa" : "Finalizada"}{" "}
-                    </p>
-                  </div>
-                  <h4>Tipo: {cover.name}</h4>
-                  <p>{cover.type}</p>
-                  <p>Precio: {DivisaFormater(cover.price)}</p>
-                  <p>Fecha: {cover.date}</p>
-                  <p>Cupos: {cover.totalLimit}</p>
-                  <p>Hora: {cover.hour}</p>
-                  <p>Descripcion: {cover.description}</p>
-                  <div className="foogler">
+                    <h4>{cover.name}</h4>   
                     <button onClick={() => updateHandler(cover)}>
-                      <i className="bx bxs-pencil"></i>
+                      Editar <i className="bx bxs-pencil"></i>
                     </button>
-                    <button onClick={() => deleteHandler(cover)}>
+                                  
+                  </div>
+
+                  <div className="cover-middle">
+                  <p> {cover.description}</p>
+                  <div>
+                  <p> <strong>Cupos:</strong> {cover.limit}</p>
+                  <p> <strong>Fecha:</strong> {cover.date.substring(0, 10)}</p>
+                  <p>  <strong>Hora: </strong> {cover.hour}</p>
+
+                  </div>
+                  </div>
+
+                  <div className="cover-footer">
+                  <p>{cover.type}</p>
+
+                  <p>{DivisaFormater(cover.price)}</p>
+
+                  <button onClick={() => deleteHandler(cover)}>
                       <i className="bx bx-trash"></i>
                     </button>
+                  {/* <div className="foogler">
+             
+                  </div> */}
                   </div>
+
+                  </div>
+
                 </div>
               ))}
             </>

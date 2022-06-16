@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createStoreCover } from "../actions/adminActions";
+import coverActions from "../actions/coverActions";
 import { STORE_COVER_RESET } from "../constants/adminConstants";
 import { TimePicker } from "@material-ui/pickers";
 import swal from "sweetalert";
 
-export default function CoverCreateScreen() {
+export default function CoverCreateScreen(setModal=false) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [hour, setHour] = useState(new Date());
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [type, setType] = useState("General");
-  const [totalLimit, setTotalLimit] = useState("");
+  const [limit, setLimit] = useState("");
+
+  const [openModal, setOpenModal] = useState("");
+
 
   const adminSignin = useSelector((state) => state.adminSignin);
   const { adminInfo } = adminSignin;
@@ -20,8 +24,8 @@ export default function CoverCreateScreen() {
   const storeSignin = useSelector((state) => state.storeSignin);
   const { storeInfo } = storeSignin;
 
-  const createCover = useSelector((state) => state.createCover);
-  const { success: successCreate } = createCover;
+  const coverCreate = useSelector((state) => state.coverCreate);
+  const { success: successCreate } = coverCreate;
 
   const dispatch = useDispatch();
   const submitHandler = (e) => {
@@ -41,7 +45,7 @@ export default function CoverCreateScreen() {
         icon: "warning",
       });
       return;
-    } else if (totalLimit.length <= 0) {
+    } else if (limit.length <= 0) {
       swal("El campo Cupo total no puede estar vacio", {
         icon: "warning",
       });
@@ -53,20 +57,20 @@ export default function CoverCreateScreen() {
       return;
     } else {
       dispatch(
-        createStoreCover(
-          adminInfo.email,
-          storeInfo._id,
+        coverActions.create({
+          store: storeInfo._id,
           type,
           date,
-          hour.toLocaleTimeString(),
+          hout: hour.toLocaleTimeString(),
           price,
           description,
-          totalLimit,
-          name
-        )
+          limit,
+          name,
+        })
       );
     }
   };
+
 
   useEffect(() => {
     if (successCreate) {
@@ -75,109 +79,114 @@ export default function CoverCreateScreen() {
       setDescription("");
       setPrice("");
       setType("");
-      setTotalLimit("");
+      setLimit("");
     }
+    setOpenModal(setModal)
+
   }, [dispatch, successCreate]);
 
   return (
-    <div className="state">
-      <div className="state__header">
-        <h2>Entrada o Cover</h2>
-        <button onClick={submitHandler}>
-          <i className="bx bxs-pencil"></i> Guardar
-        </button>
-      </div>
+    <div className={openModal? "modal active" : "modal"}>
       <div>
-        <div className="item w-100 up">
-          <h3>Tipo de evento</h3>
+        <div className="modal-header">
+          <button
+            href="/"
+            className="back-btn"
+            onClick={() => setOpenModal(false)}
+          >
+            <img src="./assets/left-back.svg" alt="back" />
+            Atras
+          </button>
+          <h2>Crear entrada o cover</h2>
+          
+        </div>
+        <form>
           <input
             type="text"
             name=""
             id=""
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder="Nombre del evento"
             required
           />
-        </div>
-        <div className="event-fields">
-          {/* <div className="left"></div> */}
-          <div className="w-70">
-            <div className="w-50">
-              <div className="item item-flex w-100">
-                <h3>Cupo total</h3>
-                <input
-                  type="number"
-                  value={totalLimit}
-                  onChange={(e) => setTotalLimit(e.target.value)}
-                />
-              </div>
-              <div className="item item-flex w-100">
-                <h3>Precio</h3>
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  value={price}
-                  onChange={(e) => setPrice(e.target.value)}
-                />
-              </div>
+               <input
+                    type="number"
+                    value={limit}
+                    onChange={(e) => setLimit(e.target.value)}
+                    placeholder="Cupo total"
+                  />
 
-              <div className="item item-flex w-100">
-                <h3>Fecha</h3>
+<input
+                    type="text"
+                    inputMode="numeric"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    placeholder="Precio"
+                  />
+
+<input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    placeholder="Fecha"
+                    required
+                  />
+
+
+          <div className="event-fields">
+            {/* <div className="left"></div> */}
+            <div className="second-modal-container">
+            <TimePicker value={hour} onChange={setHour} />
+
+              <ul className="cover-type-list">
+                <li>
                 <input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="componentsDate">
-                <h3>Hora</h3>
-                <div className="cc1">
-                  <TimePicker value={hour} onChange={setHour} />
-                </div>
-              </div>
+                type="radio"
+                name="type"
+                id="general"
+                value="General"
+                onChange={(e) => setType(e.target.value)}
+                required
+                checked
+              />
+              <label htmlFor="general">General</label>
+              <div className="check"><div className="inside"></div></div>
+
+                </li>
+
+                <li>
+                <input
+                type="radio"
+                name="type"
+                id="especial"
+                value="Especial"
+                onChange={(e) => setType(e.target.value)}
+                required
+              />
+              <label htmlFor="Especial">Especial</label>
+              <div className="check"><div className="inside"></div></div>
+                </li>
+              </ul>
             </div>
           </div>
-        </div>
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Descripcion"
+          ></textarea>
+           <button onClick={submitHandler}>
+          <i className="bx bxs-pencil"></i> Guardar
+        </button> 
+        </form>
+        
+       
+        {/* <input type="file" name="" id="" /> */}
       </div>
-      <div className="screfooter">
-        <div className="option border">
-          <div className="form-group">
-            <input
-              type="radio"
-              name="type"
-              id="general"
-              value="General"
-              onChange={(e) => setType(e.target.value)}
-              required
-              checked
-            />
-            <label htmlFor="general">General</label>
-          </div>
-          <div className="form-group">
-            <input
-              type="radio"
-              name="type"
-              id="especial"
-              value="Especial"
-              onChange={(e) => setType(e.target.value)}
-              required
-            />
-            <label htmlFor="especial">Especial</label>
-          </div>
-        </div>
-        <h4>Descripcion:</h4>
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="10"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-      </div>
-
-      <input type="file" name="" id="" />
     </div>
   );
 }

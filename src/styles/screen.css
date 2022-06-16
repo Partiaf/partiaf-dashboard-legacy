@@ -1,7 +1,7 @@
 .screen {
   position: relative;
-  width: calc(100% - 18rem);
-  left: 20rem;
+  width: calc(100%);
+  left: 18rem;
   top: 0;
   overflow: hidden;
   height: 94vh;
@@ -12,7 +12,7 @@
 
 .screen-grid {
   position: relative;
-  width: calc(100% - 10rem);
+  width: 100%;
   left: 10rem;
   top: 0;
   overflow: hidden;
@@ -46,6 +46,7 @@
 
 .center__screen {
   padding: 1rem;
+  width: 100%;
   height: 100%;
 }
 
@@ -124,7 +125,7 @@
 }
 
 .flex.border {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
@@ -135,7 +136,7 @@
 
 .box {
   width: 100%;
-  height: 75px;
+  /* height: 75px; */
   border: none;
   border-radius: 5px;
   padding: 1em;
@@ -590,6 +591,13 @@ button {
 }
 .card-header {
   font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-header button{
+  background-color: transparent;
 }
 
 .normal-text {
@@ -786,6 +794,24 @@ select {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+.modal{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  z-index: 99999999999;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.modal.active{
+  display: flex;
+}
+
 .modal-store.active {
   display: flex;
   align-items: center;
@@ -812,6 +838,19 @@ select {
   width: 50rem;
   border-radius: .5rem;
   overflow: hidden;
+}
+
+
+.modal > div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #FFF;
+  /* height: 22rem; */
+  overflow: hidden;
+  width: 50rem;
+  border-radius: .5rem;
 }
 
 .modal-store > div header{
@@ -872,17 +911,57 @@ select {
 }
 .cover__card {
   min-width: 288px;
-  width: 300px;
+  width: 500px;
   min-height: 200px;
-  height: 220px;
+  height: 200px;
   border: none;
   border-radius: 5px;
-  padding: 1em;
+  /* padding: 2rem; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   position: relative;
+  display: flex;
+  border:1px solid rgba(0, 0, 0, 0.1);  
 }
 
+.cover__card img{
+  width: 150px;
+}
+.cover-content{
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cover-middle{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  
+}
+.cover-middle p{
+  font-size: 1.2rem;
+}
+
+.cover-footer{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.4rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cover-footer button{
+  background-color: transparent;
+  font-size: 1.6rem;
+}
+.cover-footer > div{
+  font-size: 1.2rem;
+}
 .loading__box {
   display: flex;
   flex-direction: column;
@@ -956,6 +1035,7 @@ select {
   width:100%;
   border-radius: 5rem;
   /* overflow: hidden; */
+  z-index: 99999999999;
 }
 
 .dropdown::before {
@@ -996,7 +1076,7 @@ select {
   background-color: var(--white);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: .5rem;
-  z-index: 9999999999999;
+  z-index: 99999999999999999999999999;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1017,6 +1097,7 @@ select {
   display: inline-block;
   font-weight: 500;
   padding: 1.5rem 0;
+  z-index: 9999999999999999;
 }
 
 .dropdown .option a{
