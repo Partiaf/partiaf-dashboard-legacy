@@ -25,6 +25,7 @@ import MapScreen from "./screens/MapScreen";
 import ResetPasswordScreen from "./screens/ResetPasswordScreen";
 import ChangePasswordScreen from "./screens/ChangePasswordScreen";
 import VerificationResetScreen from "./screens/VerificationResetScreen";
+import CoverQueueScreen from "./screens/CoverQueueScreen";
 
 function App() {
   const adminSignin = useSelector((state) => state.adminSignin);
@@ -44,6 +45,7 @@ function App() {
               <Route path="/menu" element={<MenuScreen/>} exact></Route>
               <Route path="/chairs" element={<ChairsScreen/>} exact></Route>
               <Route path="/cover" element={<CoverScreen/>} exact></Route>
+              <Route path="/cover-queue" element={<CoverQueueScreen />} exact></Route>
               <Route path="/buy" element={<BuyScreen/>} exact></Route>
               <Route path="/staff" element={<StaffScreen/>} exact></Route>
               <Route path="/setting" element={<SettingScreen />} exact></Route>

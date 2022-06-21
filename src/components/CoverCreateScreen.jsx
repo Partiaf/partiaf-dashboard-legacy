@@ -80,8 +80,8 @@ export default function CoverCreateScreen(setModal=false) {
       setPrice("");
       setType("");
       setLimit("");
+      setOpenModal(false)
     }
-    setOpenModal(setModal)
 
   }, [dispatch, successCreate]);
 

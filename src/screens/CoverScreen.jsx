@@ -13,7 +13,6 @@ import coverActions from "../actions/coverActions";
 import { TimePicker } from "@material-ui/pickers";
 import swal from "sweetalert";
 
-
 export default function CoverScreen(props) {
   const [thatScreen, setThatScreen] = useState("Create");
 
@@ -26,7 +25,7 @@ export default function CoverScreen(props) {
   const coverList = useSelector((state) => state.coverList);
   const { loading: loadingList, data: covers } = coverList;
 
-  console.log(covers)
+  console.log(covers);
 
   const coverCreate = useSelector((state) => state.coverCreate);
   const { success: successCreate } = coverCreate;
@@ -55,7 +54,7 @@ export default function CoverScreen(props) {
     }
 
     if (storeInfo) {
-      dispatch(coverActions.list( storeInfo._id));
+      dispatch(coverActions.list(storeInfo._id));
       // dispatch(listCovers(adminInfo.email, storeInfo._id));
     }
   }, [
@@ -76,9 +75,6 @@ export default function CoverScreen(props) {
   const [limit, setLimit] = useState("");
 
   const [openModal, setOpenModal] = useState("");
-
-
-
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -123,7 +119,6 @@ export default function CoverScreen(props) {
     }
   };
 
-
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: STORE_COVER_RESET });
@@ -132,141 +127,138 @@ export default function CoverScreen(props) {
       setPrice("");
       setType("");
       setLimit("");
+      setOpenModal(false);
     }
-
   }, [dispatch, successCreate]);
-
 
   return (
     <>
-     <div className="screen">
-      <div className="center__screen">
-        <div className="screen-header-principal">
-          <div className="box">
-            <h3>Total Entradas</h3>
-            {loadingList ? <LoadingBox /> : <p>{storeInfo.totalLimit}</p>}
-          </div>
-          <div className="box">
-            <h3>Entradas Efectivas</h3>
-            <p>0</p>
-          </div>
-          <div className="box">
-            <h3>Entradas no Efectivas </h3>
-            <p>0</p>
-          </div>
-        </div>
-        <div className="screen-title">
-          <h3>Entradas creadas</h3>
-          <button onClick={() => setOpenModal(true)}>Crear Entrada</button>
-        </div>
-        <CoverListScreen loading={loadingList} covers={covers} />
-          
-      </div>
-    </div>
-    
-    <div className={openModal? "modal active" : "modal"}>
-      <div>
-        <div className="modal-header">
-          <button
-            href="/"
-            className="back-btn"
-            onClick={() => setOpenModal(false)}
-          >
-            <img src="./assets/left-back.svg" alt="back" />
-            Atras
-          </button>
-          <h2>Crear entrada o cover</h2>
-          
-        </div>
-        <form>
-          <input
-            type="text"
-            name=""
-            id=""
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Nombre del evento"
-            required
-          />
-               <input
-                    type="number"
-                    value={limit}
-                    onChange={(e) => setLimit(e.target.value)}
-                    placeholder="Cupo total"
-                  /> 
-
-<input
-                    type="text"
-                    inputMode="numeric"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    placeholder="Precio"
-                  />
-
-<input
-                    type="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                    placeholder="Fecha"
-                    required
-                  />
-
-
-          <div className="event-fields">
-            {/* <div className="left"></div> */}
-            <div className="second-modal-container">
-            <TimePicker value={hour} onChange={setHour} />
-
-              <ul className="cover-type-list">
-                <li>
-                <input
-                type="radio"
-                name="type"
-                id="general"
-                value="General"
-                onChange={(e) => setType(e.target.value)}
-                required
-                checked
-              />
-              <label htmlFor="general">General</label>
-              <div className="check"><div className="inside"></div></div>
-
-                </li>
-
-                <li>
-                <input
-                type="radio"
-                name="type"
-                id="especial"
-                value="Especial"
-                onChange={(e) => setType(e.target.value)}
-                required
-              />
-              <label htmlFor="Especial">Especial</label>
-              <div className="check"><div className="inside"></div></div>
-                </li>
-              </ul>
+      <div className="screen">
+        <div className="center__screen">
+          <div className="screen-header-principal">
+            <div className="box">
+              <h3>Total Entradas</h3>
+              {loadingList ? <LoadingBox /> : <p>{storeInfo.limit}</p>}
+            </div>
+            <div className="box">
+              <h3>Entradas Efectivas</h3>
+              <p>0</p>
+            </div>
+            <div className="box">
+              <h3>Entradas no Efectivas </h3>
+              <p>0</p>
             </div>
           </div>
-          <textarea
-            name=""
-            id=""
-            cols="30"
-            rows="10"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Descripcion"
-          ></textarea>
-           <button onClick={submitHandler}>
-          <i className="bx bxs-pencil"></i> Guardar
-        </button> 
-        </form>
-        
-       
-        {/* <input type="file" name="" id="" /> */}
+          <div className="screen-title">
+            <h3>Entradas creadas</h3>
+            <button onClick={() => setOpenModal(true)}>Crear Entrada</button>
+          </div>
+          <CoverListScreen loading={loadingList} covers={covers} />
+        </div>
       </div>
-    </div>
+
+      <div className={openModal ? "modal active" : "modal"}>
+        <div>
+          <div className="modal-header">
+            <button
+              href="/"
+              className="back-btn"
+              onClick={() => setOpenModal(false)}
+            >
+              <img src="./assets/left-back.svg" alt="back" />
+              Atras
+            </button>
+            <h2>Crear entrada o cover</h2>
+          </div>
+          <form>
+            <input
+              type="text"
+              name=""
+              id=""
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Nombre del evento"
+              required
+            />
+            <input
+              type="number"
+              value={limit}
+              onChange={(e) => setLimit(e.target.value)}
+              placeholder="Cupo total"
+            />
+
+            <input
+              type="text"
+              inputMode="numeric"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              placeholder="Precio"
+            />
+
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              placeholder="Fecha"
+              required
+            />
+
+            <div className="event-fields">
+              {/* <div className="left"></div> */}
+              <div className="second-modal-container">
+                <TimePicker value={hour} onChange={setHour} />
+
+                <ul className="cover-type-list">
+                  <li>
+                    <input
+                      type="radio"
+                      name="type"
+                      id="general"
+                      value="General"
+                      onChange={(e) => setType(e.target.value)}
+                      required
+                      checked
+                    />
+                    <label htmlFor="general">General</label>
+                    <div className="check">
+                      <div className="inside"></div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <input
+                      type="radio"
+                      name="type"
+                      id="especial"
+                      value="Especial"
+                      onChange={(e) => setType(e.target.value)}
+                      required
+                    />
+                    <label htmlFor="especial">Especial</label>
+                    <div className="check">
+                      <div className="inside"></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Descripcion"
+            ></textarea>
+            <button onClick={submitHandler}>
+              <i className="bx bxs-pencil"></i> Guardar
+            </button>
+          </form>
+
+          {/* <input type="file" name="" id="" /> */}
+        </div>
+      </div>
     </>
-   
   );
 }
