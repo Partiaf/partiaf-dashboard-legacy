@@ -925,6 +925,7 @@ select {
   position: relative;
   display: flex;
   border:1px solid rgba(0, 0, 0, 0.1);  
+  color: #1a1a1a;
 }
 
 .cover__card img{

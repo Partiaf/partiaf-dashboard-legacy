@@ -1,6 +1,6 @@
 import React from "react";
 
-const QueueList = ({ title, type, covers }) => {
+const QueueList = ({ title, type, covers, coverData}) => {
 
     console.log(covers)
   return (
@@ -18,8 +18,8 @@ const QueueList = ({ title, type, covers }) => {
             </div>
 
             <div className="event-section">
-              <h4>Gran Evento Masico</h4>
-              <p>GENERAL</p>
+              <h4>{coverData.name}</h4>
+              <p>{coverData.type.toUpperCase()}</p>
             </div>
           </div>
         ))}

@@ -22,7 +22,7 @@ import {
   bookingUpdateReducer,
 } from "../reducers/bookingReducer.js";
 import menuReducer from "../reducers/menuReducer.js";
-import coverReducer from "../reducers/coverReducers.js";
+import coverReducer, { getCoverReducer } from "../reducers/coverReducers.js";
 import chairReducer from "../reducers/chairReducer.js";
 import itemsReducer from "../reducers/itemsReducer.js";
 import { generalReducer } from "../reducers/globalReducer.js";
@@ -94,7 +94,7 @@ const reducer = combineReducers({
   adminActiveEmail : adminActiveEmailReducer,
   adminResetPassword : adminResetPasswordReducer,
   adminChangePassword : adminChangePasswordReducer,
-
+  oneCover: getCoverReducer,
 
 
   storeAddressMap: storeAddressMapReducer,

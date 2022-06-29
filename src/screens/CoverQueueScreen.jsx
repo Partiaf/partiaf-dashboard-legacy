@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import coverActions from "../actions/coverActions";
+import { useParams } from "react-router-dom";
+import coverActions, { getCover } from "../actions/coverActions";
 import QueueList from "../components/QueueList";
 import CoverScreen from "./CoverScreen";
 
@@ -8,16 +9,19 @@ export default function CoverQueueScreen(props) {
   const storeSignin = useSelector((state) => state.storeSignin);
   const { storeInfo } = storeSignin;
 
-  const coverList = useSelector((state) => state.coverList);
-  const { loading: loadingList, data: covers } = coverList;
+  const oneCover = useSelector((state) => state.oneCover);
+  const { loading: loadingList, cover} = oneCover;
 
+  const {id} = useParams();
+
+  console.log(loadingList)
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (storeInfo) {
-      dispatch(coverActions.list(storeInfo._id));
-    }
+      dispatch(getCover(id));
   }, [dispatch, storeInfo]);
+
+  console.log(cover)
 
   return (
     <>
@@ -44,7 +48,8 @@ export default function CoverQueueScreen(props) {
                 <QueueList
                   title="Aprobados"
                   type="success"
-                  covers={covers[0].peoples}
+                  covers={cover.peoples}
+                  coverData={cover}
                 />
                 <QueueList title="Recazhados" type="denied" />
               </>
