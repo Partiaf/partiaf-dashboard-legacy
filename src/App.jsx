@@ -45,7 +45,7 @@ function App() {
               <Route path="/menu" element={<MenuScreen/>} exact></Route>
               <Route path="/chairs" element={<ChairsScreen/>} exact></Route>
               <Route path="/cover" element={<CoverScreen/>} exact></Route>
-              <Route path="/cover-queue" element={<CoverQueueScreen />} exact></Route>
+              <Route path="/cover-queue/:id" element={<CoverQueueScreen />} exact></Route>
               <Route path="/buy" element={<BuyScreen/>} exact></Route>
               <Route path="/staff" element={<StaffScreen/>} exact></Route>
               <Route path="/setting" element={<SettingScreen />} exact></Route>

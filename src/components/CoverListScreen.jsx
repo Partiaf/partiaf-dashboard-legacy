@@ -9,6 +9,7 @@ import {
 } from "../constants/adminConstants";
 import CoverUpdateScreen from "./CoverUpdateScreen";
 import { DivisaFormater } from "../utils/DivisaFormater";
+import { Link } from "react-router-dom";
 
 export default function CoverListScreen({ loading, covers, state }) {
   const adminSignin = useSelector((state) => state.adminSignin);
@@ -74,7 +75,7 @@ export default function CoverListScreen({ loading, covers, state }) {
           ) : (
             <>
               {covers.map((cover) => (
-                <div className="cover__card" key={cover._id} >
+                <Link to={`/cover-queue/${cover._id}`} className="cover__card" key={cover._id} >
                   <img src="/coverimg.jpg" alt="" />
                   <div className="cover-content">
 
@@ -111,7 +112,7 @@ export default function CoverListScreen({ loading, covers, state }) {
 
                   </div>
 
-                </div>
+                </Link>
               ))}
             </>
           )}
