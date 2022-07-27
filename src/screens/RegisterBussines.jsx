@@ -66,6 +66,8 @@ export default function RegisterBussines(props) {
     }
   };
 
+  console.log(images)
+
   const submitHandler = (e) => {
     e.preventDefault();
     const newLat = addressMap ? addressMap.lat : "";
@@ -93,7 +95,7 @@ export default function RegisterBussines(props) {
         password,
         email,
         limit: totalLimit,
-        images,
+        photos: images,
         location: [{ geo: [{ caract: "point", longitud: lng, latitude: lat }] }],
         admin: adminInfo._id
       })
