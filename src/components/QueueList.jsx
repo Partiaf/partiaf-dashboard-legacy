@@ -1,13 +1,14 @@
 import React from "react";
 
-const QueueList = ({ title, type, covers, coverData}) => {
+const QueueList = ({ title, type, covers, in_state, coverData}) => {
 
-    console.log(covers)
+    console.log("type", covers)
   return (
     <div className="queue-list">
       <h3>{title}</h3>
       <div className="queue-cards">
-        {covers?.map((cover) => (
+        {covers?.filter((cover) => cover.state == in_state)
+        .map((cover) => (
           <div className={`card-queue ${type}`} key={cover._id}>
             <div className="image-section">
               <img src="/img/userImage.jpeg" alt="" />

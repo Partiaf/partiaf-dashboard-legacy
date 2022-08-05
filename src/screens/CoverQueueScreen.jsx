@@ -44,10 +44,16 @@ export default function CoverQueueScreen(props) {
           <div className="queue-steps">
             {!loadingList && (
               <>
-                <QueueList title="En cola" type="" />
+                <QueueList 
+                  title="En cola" 
+                  type="in-list" 
+                  in_state="in-list" 
+                  covers={cover.peoples} 
+                  coverData={cover}/>
                 <QueueList
                   title="Aprobados"
                   type="success"
+                  in_state="accepted"
                   covers={cover.peoples}
                   coverData={cover}
                 />
