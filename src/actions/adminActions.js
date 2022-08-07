@@ -244,7 +244,7 @@ export const updateStore = (store) => async (dispatch) => {
   dispatch({ type: UPDATE_STORE_REQUEST, payload: store });
   try {
     const { data } = await Axios.put(
-      `${URL}/stores/updateStore/${store.id}`,
+      `${URL}/stores/${store.id}`,
       store
     );
 
@@ -415,47 +415,44 @@ export const deleteStoreCover =
 
 export const updatenStoreCover =
   (
-    email,
-    storeId,
     coverId,
+    name,
     type,
-    date,
-    hour,
     price,
+    date,
+    limit,
+    hour,
     description,
-    totalLimit,
-    name
+    image,
   ) =>
   async (dispatch) => {
     dispatch({
       type: UPDATE_COVER_REQUEST,
       payload: {
-        email,
-        storeId,
         coverId,
-        type,
-        date,
-        hour,
-        price,
-        description,
-        totalLimit,
         name,
+        type,
+        price,
+        date,
+        limit,
+        hour,
+        description,
+        image,
       },
     });
     try {
-      const { data } = await Axios.put(`${URL}/stores/updateCover/${coverId}`, {
-        email,
-        storeId,
-        coverId,
-        type,
-        date,
-        hour,
-        price,
-        description,
-        totalLimit,
+      console.log("DATAAAA", name)
+      const { data } = await Axios.put(`${URL}/stores/covers/${coverId}`, {
         name,
+        type,
+        price,
+        date,
+        limit,
+        hour,
+        description,
+        image,
       });
-
+      console.log(data)
       dispatch({ type: UPDATE_COVER_SUCCESS, payload: data });
       // localStorage.setItem("storeInfo", JSON.stringify(data));
     } catch (error) {

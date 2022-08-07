@@ -33,59 +33,69 @@ export default function Navigation() {
         </Link>
 
         <Link
-          to="/booking"
-          onClick={() => setActive("booking")}
+          to="/"
+          // onClick={() => setActive("booking")}
           className={
             active === "booking"
-              ? "navigation__item active"
-              : "navigation__item"
+              ? "navigation__item nav-lock active"
+              : "navigation__item nav-lock"
           }
         >
           <div className="item-dash">
             <img src="./img/navigation/booking-icon.svg" alt="" />
             <h5>Reservas</h5>
           </div>
+
+          <div className="lock">
+          <i className='bx bxs-lock'></i>
+          </div>
         </Link>
 
         <Link
-          to="/buy"
-          onClick={() => setActive("buy")}
+          to="/"
+          // onClick={() => setActive("buy")}
           className={
-            active === "buy" ? "navigation__item active" : "navigation__item"
+            active === "buy" ? "navigation__item active" : "navigation__item nav-lock"
           }
         >
           <div className="item-dash">
             <img src="./img/navigation/buy-icon.svg" alt="" />
             <h5>Compras</h5>
           </div>
-         
+          <div className="lock">
+          <i className='bx bxs-lock'></i>
+          </div>
         </Link>
         
         <Link
-          to="/menu"
-          onClick={() => setActive("menu")}
+          to="/"
+          // onClick={() => setActive("menu")}
           className={
-            active === "menu" ? "navigation__item active" : "navigation__item"
+            active === "menu" ? "navigation__item active" : "navigation__item nav-lock"
           }
         >
           <div className="item-dash">
             <img src="./img/navigation/menu-icon.svg" alt="" />
             <h5>Menu</h5>
           </div>
-         
+          <div className="lock">
+          <i className='bx bxs-lock'></i>
+          </div>
         </Link>
         <Link
-          to="/chairs"
-          onClick={() => setActive("chairs")}
+          to="/"
+          // onClick={() => setActive("chairs")}
           className={
-            active === "chairs" ? "navigation__item active" : "navigation__item"
+            active === "chairs" ? "navigation__item active" : "navigation__item nav-lock"
           }
         >
           <div className="item-dash">
             <img src="./img/chair.png" alt="" />
             <h5>Mesas</h5>
           </div>
-        
+          <div className="lock">
+          <i className='bx bxs-lock'></i>
+          </div>
         </Link>
         <Link
           to="/settings"

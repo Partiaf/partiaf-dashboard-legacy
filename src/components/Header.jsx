@@ -37,9 +37,9 @@ export default function Header() {
               <Link className="btn-menu" to="/setting"> Mi perfil
               
         </Link>
-        <button className="btn-menu" onClick={signoutStoreHandler}>
+        <Link to="/settings" className="btn-menu" >
               Configurar negocio
-            </button>
+            </Link>
             
             <button className="btn-menu" onClick={signoutStoreHandler}>
               Cambiar de negocio

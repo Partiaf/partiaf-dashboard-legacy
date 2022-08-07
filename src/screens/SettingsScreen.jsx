@@ -213,16 +213,16 @@ export default function SettingsScreen(props) {
 
       <div className={openModal ? "modalStore active" : "modalStore"}>
         <div>
-          <input
+          {/* <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Ingrese la contrasena del negocio"
-          />
-          <button onClick={submitHandler}>Continuar</button>
-          <button className="btn-none" onClick={() => setOpenModal(false)}>
+          /> */}
+          {/* <button onClick={submitHandler}>Continuar</button> */}
+          {/* <button className="btn-none" onClick={() => setOpenModal(false)}>
             Atras
-          </button>
+          </button> */}
           {/* </form> */}
         </div>
       </div>

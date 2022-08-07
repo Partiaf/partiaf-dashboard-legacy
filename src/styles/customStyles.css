@@ -269,9 +269,10 @@
 .footer-setting{
   width: 90%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin:  4rem auto;
+  gap: 2rem;
 }
 
 .footer-setting button{
@@ -408,3 +409,44 @@ input[type=radio]:checked ~ label{
   color: #FFF;
   border-radius: .5rem;
 } 
+
+.cover-actions{
+  position: absolute;
+  right: -35px;
+  top: -1px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
+  border-radius: 0 5px 5px 0px;
+}
+
+.cover-actions button{
+  width: 50%;
+  border-radius: 0;
+  background-color: #FFF;
+  padding-left: 0;
+}
+
+
+.cover-actions button i{
+  font-size: 1.8rem;
+}
+
+.cover-content{
+  color: #1a1a1a;
+}
+
+.nav-lock .item-dash{
+  opacity: .5;
+}
+
+
+.lock{
+  position: absolute;
+  color: #1a1a1a;
+  font-size: 2rem;
+  right: 2rem;
+  opacity: .8;
+}

@@ -13,14 +13,14 @@ export default function SettingScreen(props) {
   const adminSignin = useSelector((state) => state.adminSignin);
   const { adminInfo } = adminSignin;
 
-  const [name, setName] = useState(adminInfo.name);
+  const [name, setName] = useState(adminInfo.firstname);
   const [lastname, setLastname] = useState(adminInfo.lastname);
   const [identification, setIdentification] = useState(
     adminInfo.identification
   );
   const [image, setImage] = useState(adminInfo.image);
   const [email, setEmail] = useState(adminInfo.email);
-  const [mobile, setMobile] = useState(adminInfo.mobile);
+  const [mobile, setMobile] = useState(adminInfo.phone);
   const [age, setAge] = useState(adminInfo.age);
   const [address, setAddress] = useState(adminInfo.address);
   const [confirmPassword, setConfirmPassword] = useState("");

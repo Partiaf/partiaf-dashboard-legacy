@@ -25,7 +25,6 @@ export default function CoverScreen(props) {
   const coverList = useSelector((state) => state.coverList);
   const { loading: loadingList, data: covers } = coverList;
 
-  console.log(covers);
 
   const coverCreate = useSelector((state) => state.coverCreate);
   const { success: successCreate } = coverCreate;
@@ -75,6 +74,7 @@ export default function CoverScreen(props) {
   const [limit, setLimit] = useState("");
 
   const [openModal, setOpenModal] = useState("");
+
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -259,6 +259,9 @@ export default function CoverScreen(props) {
           {/* <input type="file" name="" id="" /> */}
         </div>
       </div>
+
+
+     
     </>
   );
 }
