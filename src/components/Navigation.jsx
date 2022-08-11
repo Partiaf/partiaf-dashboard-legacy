@@ -97,7 +97,7 @@ export default function Navigation() {
           <i className='bx bxs-lock'></i>
           </div>
         </Link>
-        <Link
+        {/* <Link
           to="/settings"
           onClick={() => setActive("settings")}
           className={
@@ -110,7 +110,7 @@ export default function Navigation() {
             <img src="./img/navigation/settings-icon.svg" alt="" />
             <h5>Ajustes</h5>
           </div>
-        </Link>
+        </Link> */}
         {/* 
                 <Link to="/buy" onClick={() => setActive('buys')} className={active === "buys"? "navigation__item active"
                   : 'navigation__item'}>

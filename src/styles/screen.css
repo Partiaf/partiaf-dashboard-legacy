@@ -1353,3 +1353,16 @@ font-size: 1.4rem;
   font-size: 1.4rem;
   margin-top: .5rem;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+.queue-cards{
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-bottom: 20rem;
+}

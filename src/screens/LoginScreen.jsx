@@ -54,6 +54,7 @@ export default function LoginScreen() {
       navigate(redirect)
     }
   }, [navigate, redirect, adminInfo]);
+  console.log(error)
 
   return (
     <div className="container-login">
